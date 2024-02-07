@@ -10,9 +10,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/snandakumar2912/ci-cd.git"
+    "url": "https://github.com/JayaDeepikaKoppineni/ci-cd.git"
   },
-  "author": "Shruthi Nandakumar",
+  "author": "JayaDeepikaKoppineni",
   "license": "TWA",
   "devDependencies": {
     "eslint": "^8.6.0",
