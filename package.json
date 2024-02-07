@@ -1,0 +1,24 @@
+{
+  "name": "just_a_second_connector",
+  "version": "1.0.0",
+  "description": " TWA connects people who are involved with the Criminal Justice system in some way who need to find a job connect with employment opportunities at employers who are willing to give them a second chance. They currently track both sets of participants in their programs, the jobseekers and the employers, through a set of Google Docs. They need a system to help match the restrictions both groups require.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint .",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sai-gif/ci-cd.git"
+  },
+  "author": "Saikumar Kaluvakolu",
+  "license": "TWA",
+  "devDependencies": {
+    "eslint": "^8.6.0",
+    "jest": "^27.4.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
