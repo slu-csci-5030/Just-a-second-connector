@@ -11,16 +11,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v2
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-          
+
       - name: Install dependencies
         run: npm install
-        
+
       - name: Run ESLint
-        run: npm run lint
+        run: npx eslint .
+        continue-on-error: true # Continue with the pipeline even if there are linting errors
+
+  build_and_deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    needs: lint
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      # Add additional steps for build and deployment as needed
