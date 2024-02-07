@@ -2,9 +2,12 @@ name: cicPipeline
 
 on:
   push:
-    branches: [ Chirag1x ]
+    branches: 
+      - main
+
   pull_request:
-    branches: [ Chirag1x]
+    branches: 
+      - main
 
 jobs:
   build-and-test:
