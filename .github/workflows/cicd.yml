@@ -26,4 +26,8 @@ jobs:
         run: npm install
 
       - name: Run ESLint
+<<<<<<< Updated upstream
         run: npx eslint
+=======
+        run: npx eslint
+>>>>>>> Stashed changes
