@@ -1,105 +1,30 @@
-import React, { useState } from "react";
-import "./Login.css";
+// signup.component.test.js
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import SignUp from '../signup.component.js';
 
-function SignUp() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+test('appends object to local storage when user is registered', () => {
+  render(<SignUp />);
+  
+  // Fill in the registration form
+  const firstNameInput = screen.getByPlaceholderText(/First name/i);
+  const lastNameInput = screen.getByPlaceholderText(/Last name/i);
+  const emailInput = screen.getByPlaceholderText(/Email/i);
+  const passwordInput = screen.getByPlaceholderText(/Password/i);
+  const submitButton = screen.getByRole('button', { name: /Sign Up/i });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const existingData = JSON.parse(localStorage.getItem("userData")) || [];
-    if (firstName && lastName && email && password) {
-      // Check if the email already exists
-      const emailExists = existingData.some((user) => user.email === email);
-      if (emailExists) {
-        alert("Email already exists. Please use a different email.");
-      } else {
-        // Append new user data
-        const newData = [
-          ...existingData,
-          { firstName, lastName, email, password },
-        ];
-        // Store updated user data in local storage
-        localStorage.setItem("userData", JSON.stringify(newData));
-        alert("Registered successfully");
-      }
-    } else {
-      alert("Please fill in all details");
-    }
-  };
+  fireEvent.change(firstNameInput, { target: { value: 'John' } });
+  fireEvent.change(lastNameInput, { target: { value: 'Doe' } });
+  fireEvent.change(emailInput, { target: { value: 'john.doe@example.com' } });
+  fireEvent.change(passwordInput, { target: { value: 'password123' } });
+  fireEvent.click(submitButton);
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <h1 className="form-h1">Sign Up</h1>
-
-      <div className="mb-3">
-        <label className="input-label" for="firstName">
-          First name
-        </label>
-        <input
-          id="firstName"
-          type="text"
-          className="form-control"
-          placeholder="First name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-      </div>
-
-      <div className="mb-3">
-        <label className="input-label" for="lastName">
-          Last name
-        </label>
-        <input
-          id="lastName"
-          type="text"
-          className="form-control"
-          placeholder="Last name"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-      </div>
-
-      <div className="mb-3">
-        <label className="input-label" for="email">
-          Email address
-        </label>
-        <input
-          id="email"
-          type="email"
-          className="form-control"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-
-      <div className="mb-3">
-        <label className="input-label" for="password">
-          Password
-        </label>
-        <input
-          id="password"
-          type="password"
-          className="form-control"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-
-      <div className="d-grid">
-        <button type="submit" className="btn btn-primary form-btn">
-          Sign Up
-        </button>
-      </div>
-      <p className="forgot-password text-right  forgot-text">
-        Already registered <a href="/sign-in">Sign In?</a>
-      </p>
-    </form>
-  );
-}
-
-export default SignUp;
+  // Check if the user data is appended to local storage
+  const storedData = JSON.parse(localStorage.getItem('userData'));
+  expect(storedData).toContainEqual({
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'john.doe@example.com',
+    password: 'password123'
+  });
+});
