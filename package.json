@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sai-gif/ci-cd.git"
+    "url": "https://github.com/snandakumar2912/ci-cd.git"
   },
-  "author": "Saikumar Kaluvakolu",
+  "author": "Shruthi Nandakumar",
   "license": "TWA",
   "devDependencies": {
     "eslint": "^8.6.0",
     "jest": "^27.4.7"
   },
   "dependencies": {
-    "express": "^4.17.1"
-  }
+    "express": "^4.17.1"
+  }
 }
