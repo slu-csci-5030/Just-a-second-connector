@@ -1,4 +1,3 @@
-// signup.component.test.js
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import SignUp from '../signup.component.js';
@@ -9,8 +8,8 @@ test('appends object to local storage when user is registered', () => {
   // Fill in the registration form
   const firstNameInput = screen.getByPlaceholderText(/First name/i);
   const lastNameInput = screen.getByPlaceholderText(/Last name/i);
-  const emailInput = screen.getByPlaceholderText(/Enter email/i);
-  const passwordInput = screen.getByPlaceholderText(/Enter password/i);
+  const emailInput = screen.getByPlaceholderText(/Email/i);
+  const passwordInput = screen.getByPlaceholderText(/Password/i);
   const submitButton = screen.getByRole('button', { name: /Sign Up/i });
 
   fireEvent.change(firstNameInput, { target: { value: 'John' } });
