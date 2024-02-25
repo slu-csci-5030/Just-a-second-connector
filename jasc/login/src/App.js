@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import SignUp from "./components/signup.component";
 import Login from "./components/login.component";
+import SuperAdminlogin from "./components/SuperAdminlogin";
+
 
 function App() {
   return (
@@ -19,6 +21,11 @@ function App() {
                     Sign Up
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to={"/SuperAdminlogin"}>
+                    SuperAdminDashboard
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -26,6 +33,11 @@ function App() {
         <div className="auth-wrapper">
           <div className="auth-inner">
             <Routes>
+              <Route
+                path="/SuperAdminlogin"
+                element={<SuperAdminlogin />}
+              />
+              
               <Route path="/" element={<SignUp />} />
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/sign-in" element={<Login />} />
