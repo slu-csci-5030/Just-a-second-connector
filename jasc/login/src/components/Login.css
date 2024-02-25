@@ -58,3 +58,10 @@
 .mb-3 {
   margin-top: -10px;
 }
+.password-forgot{
+  color: black;
+
+}
+.wrong{
+  text-align: justify;
+}

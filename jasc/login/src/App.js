@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import SignUp from "./components/signup.component";
 import Login from "./components/login.component";
 import SuperAdminlogin from "./components/SuperAdminlogin";
+import AdminDashboard from "./components/admin-dashboard";
+import MatchJobseekerCoach from "./components/MatchJobseekerCoach";
 
 
 function App() {
@@ -41,6 +43,8 @@ function App() {
               <Route path="/" element={<SignUp />} />
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/sign-in" element={<Login />} />
+              <Route path="/admin-dashboard" element={<AdminDashboard />} />
+              <Route path="/MatchJobseekerCoach" element={<MatchJobseekerCoach/>} />
             </Routes>
           </div>
         </div>
