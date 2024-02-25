@@ -1,0 +1,59 @@
+.form-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 0px;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    background-color: #f9f9f9; /* Background color for the form */
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="date"],
+  textarea,
+  button,
+  .error-message {
+    width: calc(100% - 22px); /* Adjusted width to account for padding */
+    padding: 1px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="date"],
+  textarea {
+    resize: vertical; /* Allow vertical resizing of textarea */
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error-message {
+    display: block;
+    color: rgb(235, 66, 66);
+    font-size: 14px;
+    margin-top: 1px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    margin-top:0px;
+    color: #f0e9e9; /* Change color of the h1 text */
+  }
+  
