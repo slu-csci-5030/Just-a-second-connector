@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import SignUp from "./components/signup.component";
 import Login from "./components/login.component";
-
+import SuperAdmin from "./components/SuperAdmin";
 
 
 function App() {
@@ -24,17 +24,30 @@ function App() {
             </Link>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav ml-auto">
+                
+                <div className="nav-link wrapper">
                 <li className="nav-item">
                 {isSignUp ? (
-        <Link className="nav-link" to="/sign-in" onClick={() => setIsSignUp(false)}>
-          Sign In
-        </Link>
-      ) : (
-        <Link className="nav-link" to="/sign-up" onClick={() => setIsSignUp(true)}>
-          Sign Up
-        </Link>
-      )}
+                    <Link className="nav-link" to="/sign-in" onClick={() => setIsSignUp(false)}>
+                      Sign In
+                    </Link>
+                    ) : (
+                      <Link className="nav-link" to="/sign-up" onClick={() => setIsSignUp(true)}>
+                        Sign Up
+                      </Link>
+                    )}
+      
                 </li>
+                </div>
+                
+              </ul>
+              <ul>
+              <div className="nav-link wrapper">
+              <li className="nav-item">
+                <Link className="nav-link" to="/superadmin" onClick={() => setIsSignUp(false)}>
+                Super Admin
+              </Link></li>
+              </div>
               </ul>
             </div>
           </div>
@@ -45,6 +58,7 @@ function App() {
               <Route path="/" element={<SignUp />} />
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/sign-in" element={<Login />} />
+              <Route path="/superadmin" element={<SuperAdmin />} />
             </Routes>
           </div>
         </div>

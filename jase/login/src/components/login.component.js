@@ -25,7 +25,7 @@ function Login() {
         <h1 className="form-h1">Log In</h1>
 
         <div className="mb-3">
-          <label className="input-label" for="email">
+          <label className="input-label" for="email" color="black">
             Email address
           </label>
           <input
