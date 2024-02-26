@@ -5,7 +5,7 @@
 }
 
 body {
-  background-image: url("https://community.thriveglobal.com/wp-content/uploads/2018/09/GettyImages-743706161.jpg");
+  background-image: url("https://s3-alpha-sig.figma.com/img/3180/45c8/6d591bcf600534bc220bac8e454f74f8?Expires=1709510400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=eyA4BqN0DBhfkfAxyOXc7NmAmY5rKKMTOHfYjRDX98v2xM3Daz3vCvbjpgn2VtcOfqKn-N2A4wpiXJXdJTOndBT0dVZGDMejPkiW3vs~QQQcnZZBUMtzTX~NDx-Bdu~tBpDY3jKVl1B5pCVsm6E~UT40E~zwPHcd~DcR5TRTGPH93-DW2OJojEU8hpJDBQEA8-0p9RlU1LPUQgogiaTZMoGqejZfIkEqmfGQty-rE7ol361i~yaywMWVeY11sfODar9ZV14sfok9Wj7f5w9uahVJgoRgoQduhe0lKRSXWys3bfWUJcEl3aARNP3Pu4IjeNYnSautH1CwfPnhD4MN-Q__");
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -37,6 +37,7 @@ span {
 
 .navbar {
   width: 100vw;
+  height: 5vw;
 }
 
 
@@ -93,11 +94,10 @@ ul {
   width: 50%;
   height: 80%;
   color: #181717;
-  background-color: black;
+  background-color: none;
   box-shadow: 3px 14px 80px rgba(222, 223, 225, 0.2);
   padding: 40px 55px 45px 55px;
   border-radius: 20px;
-  transition: all 0.3s;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 
 }
@@ -128,4 +128,8 @@ ul {
 
 .forgot-password a {
   color: #167bff;
+}
+.nav-link-wrapper {
+  display: inline-block;
+  margin-right: 10px; /* Adjust as needed for spacing between buttons */
 }

@@ -65,6 +65,11 @@ label,
 span {
   font-weight: 500;
   font-family: "Fira Sans", sans-serif;
+  
+}
+.nav-link-wrapper {
+  display: inline-block;
+  margin-right: 10px; /* Adjust as needed for spacing between buttons */
 }
 
 .App {

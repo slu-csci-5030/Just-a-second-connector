@@ -35,6 +35,10 @@
   font-size: 18px;
   font-weight: 700;
 }
+.nav-link-wrapper {
+  display: inline-block;
+  margin-right: 10px; /* Adjust as needed for spacing between buttons */
+}
 
 .d-grid {
   display: flex;
