@@ -41,7 +41,12 @@
     font-size: 1rem;
 }
 
-.home{
+.home {
+  color: black;
+ 
+}
+
+.referral-form{
   color: black;
 }
   

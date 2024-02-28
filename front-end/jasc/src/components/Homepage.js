@@ -10,7 +10,8 @@ function Homepage() {
           <h3 className='logo'>Just a second connector</h3>
         </div>
         <div className='options'>
-            <div className='button'><h4 className='home'>Home</h4></div>            
+            <div className='button'><h4 className='home'>Home</h4></div>  
+            <div className='button'><h4 className='referral-form'>Referral Form</h4></div>           
         </div>
       </nav>
     </div>
