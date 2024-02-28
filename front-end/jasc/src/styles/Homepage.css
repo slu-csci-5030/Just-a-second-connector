@@ -1,0 +1,110 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+  font-family: 'Arial', sans-serif; 
+}
+
+.title {
+  margin: 20px 0;
+  font-size: 2rem; 
+  color: #333;
+}
+
+.nav-bar {
+  background-color: #005f73; 
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px; 
+}
+
+.brand, .options a {
+  color: #fff;
+  text-decoration: none; 
+}
+
+.logo {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; 
+}
+
+.options a {
+  margin-left: 10px; 
+}
+
+.button {
+  padding: 10px 20px; 
+  color: #f3f1f1; 
+  border: none;
+  border-radius: 10px; 
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s; 
+}
+
+.button:hover {
+  background-color: #ff9f1c; 
+
+}
+
+.home, .referral-form, .questionnaire-form {
+  margin: 15px;
+  padding: 15px;
+  border-radius: 15px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+  background-color: #333;
+  color: white; 
+  padding: 20px 0; 
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around; 
+  align-items: start; 
+  flex-wrap: wrap;
+}
+
+.footer-content div {
+  margin: 10px; 
+}
+
+.footer h3 {
+  margin-bottom: 10px;
+}
+
+.social-links a {
+  color: white; 
+  text-decoration: none; 
+  margin: 0 10px; 
+}
+
+.social-links a:hover {
+  text-decoration: underline; 
+}
+
+.logo-image {
+  width: 100px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column; 
+    align-items: center;
+  }
+}
+
