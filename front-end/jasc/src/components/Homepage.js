@@ -5,9 +5,14 @@ import '../styles/Homepage.css'; // Adjust the import path
 function Homepage() {
   return (
     <div className="container">
-      <header className="header">
-        <h1 className="title">Just a Second Connector</h1>
-      </header>
+      <nav className='nav-bar'>
+        <div className='brand'>
+          <h3 className='logo'>Just a second connector</h3>
+        </div>
+        <div className='options'>
+            <div className='button'><h4 className='home'>Home</h4></div>            
+        </div>
+      </nav>
     </div>
   );
 }
