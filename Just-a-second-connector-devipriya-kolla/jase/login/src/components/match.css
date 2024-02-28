@@ -1,0 +1,21 @@
+.match {
+    display: flex;
+    justify-content: space-between;
+}
+
+.job-coaches,
+.job-seekers {
+    width: 45%;
+}
+
+.job-coaches ul,
+.job-seekers ul {
+    list-style: none;
+    padding: 0;
+    height: 200px; /* Set the height of the list with overflow */
+    overflow-y: auto; /* Add vertical scrollbar */
+}
+
+.confirm-matches-button {
+    margin-top: 20px;
+}
