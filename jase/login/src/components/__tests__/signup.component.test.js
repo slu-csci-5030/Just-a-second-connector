@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 // signup.component.test.js
->>>>>>> c12a0f65d1112f7df759fde8e8070f4ea40dd98f
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import SignUp from '../signup.component.js';

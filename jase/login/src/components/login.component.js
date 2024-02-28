@@ -1,17 +1,8 @@
 // login.component.js
 import React, { useState } from "react";
-<<<<<<< HEAD
 import "./Login.css";
 
 function Login() {
-=======
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-import "./Login.css";
-
-function Login() {
-  const navigate = useNavigate(); // Use useNavigate instead of useHistory
-
->>>>>>> c12a0f65d1112f7df759fde8e8070f4ea40dd98f
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,21 +13,12 @@ function Login() {
     for (const user of userData) {
       if (user.email === email && user.password === password) {
         setIsLoggedIn(true);
-<<<<<<< HEAD
-=======
-        // Navigate to the job seeker form page upon successful login
-        navigate("/job-seeker-form"); // Use navigate instead of history.push
->>>>>>> c12a0f65d1112f7df759fde8e8070f4ea40dd98f
         return;
       }
     }
     setIsLoggedIn(false);
   };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> c12a0f65d1112f7df759fde8e8070f4ea40dd98f
   return (
     <>
       <form onSubmit={handleSubmit} className="form-div">

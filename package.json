@@ -10,9 +10,15 @@
   },
   "repository": {
     "type": "git",
+<<<<<<< HEAD
     "url": "https://github.com/sai-gif/ci-cd.git"
   },
   "author": "Sai Kumar",
+=======
+    "url": "https://github.com/Jeevan-369/ci-cd.git"
+  },
+  "author": "Jeevan",
+>>>>>>> c12a0f65d1112f7df759fde8e8070f4ea40dd98f
   "license": "TWA",
   "devDependencies": {
     "eslint": "^8.6.0",

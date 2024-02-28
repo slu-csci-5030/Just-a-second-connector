@@ -3,10 +3,32 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
+<<<<<<< HEAD
       - sai-gif
   pull_request:
     branches:
       - sai-gif
+=======
+<<<<<<< HEAD:.github/workflows/ci-cd.yml
+      - Jeevan-369
+  pull_request:
+    branches:
+      - Jeevan-369
+=======
+<<<<<<< HEAD:CI-CD.yml
+      - Karthik_M
+  pull_request:
+    branches:
+      - Karthik_M
+
+=======
+      - snandakumar2912
+  pull_request:
+    branches:
+      - snandakumar2912
+>>>>>>> e9d095d5a016822fec7d82c0ca864aab28e30356:.github/workflows/ci-cd.yml
+>>>>>>> f829890b62d72a90641a7bfaca068a75a1c99f66:CI-CD.yml
+>>>>>>> c12a0f65d1112f7df759fde8e8070f4ea40dd98f
 
 jobs:
   lint:
@@ -26,4 +48,16 @@ jobs:
         run: npm install
 
       - name: Run ESLint
+<<<<<<< HEAD
         run: npx eslint
+=======
+<<<<<<< HEAD:.github/workflows/ci-cd.yml
+        run: npx eslint
+=======
+<<<<<<< HEAD:CI-CD.yml
+        run: npx eslint
+=======
+        run: npx eslint
+>>>>>>> e9d095d5a016822fec7d82c0ca864aab28e30356:.github/workflows/ci-cd.yml
+>>>>>>> f829890b62d72a90641a7bfaca068a75a1c99f66:CI-CD.yml
+>>>>>>> c12a0f65d1112f7df759fde8e8070f4ea40dd98f
