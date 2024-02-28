@@ -3,11 +3,18 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
+<<<<<<< HEAD:CI-CD.yml
       - Karthik_M
   pull_request:
     branches:
       - Karthik_M
 
+=======
+      - snandakumar2912
+  pull_request:
+    branches:
+      - snandakumar2912
+>>>>>>> e9d095d5a016822fec7d82c0ca864aab28e30356:.github/workflows/ci-cd.yml
 
 jobs:
   lint:
@@ -27,4 +34,8 @@ jobs:
         run: npm install
 
       - name: Run ESLint
+<<<<<<< HEAD:CI-CD.yml
         run: npx eslint
+=======
+        run: npx eslint
+>>>>>>> e9d095d5a016822fec7d82c0ca864aab28e30356:.github/workflows/ci-cd.yml

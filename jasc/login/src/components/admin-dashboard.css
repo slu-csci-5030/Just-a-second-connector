@@ -1,0 +1,37 @@
+.admin-dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+.admin-sidebar {
+    width: 200px;
+    background-color: #f4f4f4;
+    border-right: 1px solid #ccc;
+}
+
+.admin-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.admin-sidebar li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.admin-sidebar li.active {
+    background-color: #ddd;
+}
+
+.admin-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.content-box {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
