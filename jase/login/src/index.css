@@ -7,11 +7,13 @@
 body {
   background-image: url("https://community.thriveglobal.com/wp-content/uploads/2018/09/GettyImages-743706161.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
   min-height: 100vh;
   display: flex;
   font-weight: 400;
   font-family: "Fira Sans", sans-serif;
-  color: #181717;
+  color: #8f7b7b;
   margin: 0; /* Remove default margin */
   padding: 0; /* Remove default padding */
 }
@@ -37,11 +39,14 @@ span {
   width: 100vw;
 }
 
+
 .container {
   height: 70px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  margin-left: 40px;
+  margin-right: 100px;
 }
 
 li {
@@ -84,13 +89,17 @@ ul {
 }
 
 .auth-inner {
-  width: 60%;
+  margin-top: -70px;
+  width: 50%;
+  height: 80%;
   color: #181717;
   background-color: black;
   box-shadow: 3px 14px 80px rgba(222, 223, 225, 0.2);
   padding: 40px 55px 45px 55px;
   border-radius: 20px;
   transition: all 0.3s;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
 }
 
 @media only screen and (max-width: 1200px) {

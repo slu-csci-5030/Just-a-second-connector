@@ -3,22 +3,24 @@
 }
 
 .form-control {
-  margin-top: 15px;
-  margin-left: 20px;
+  margin-top: 10px;
+  margin-left: 6px;
   padding: 10px 100px 10px 15px;
   border: 1px solid black;
   border-radius: 20px;
-  font-size: 15px;
-  font-weight: 500;
-  width: 90%;
+  font-size: 14px;
+  font-weight: 400;
+  width: 100%;
 }
 
 .form-h1 {
   color: white;
+  font-size: 20px;
+  margin-top: -25px;
 }
 
 .input-label {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 600;
   color: white;
   display: block;
@@ -52,4 +54,7 @@
   display: inline;
   margin-left: 20px;
   color: red;
+}
+.mb-3 {
+  margin-top: -10px;
 }

@@ -70,7 +70,7 @@ function SignUp() {
           id="email"
           type="email"
           className="form-control"
-          placeholder="Enter email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -84,7 +84,7 @@ function SignUp() {
           id="password"
           type="password"
           className="form-control"
-          placeholder="Enter password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
