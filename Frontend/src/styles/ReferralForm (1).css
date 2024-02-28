@@ -25,6 +25,25 @@ label {
     margin-bottom: 10px;
     text-align: left;
 }
+/* ReferralForm.css */
+
+/* Existing styles ... */
+
+.form-group h2 {
+    margin-bottom: 10px;
+}
+
+/* Styles for Referrer's Name */
+.form-group label[for="referrerName"] {
+    margin-top: 15px;
+}
+
+.form-group input[type="text"]#referrerName {
+    margin-top: 5px;
+}
+
+/* Additional styling for better spacing and appearance if needed */
+
 
 input[type="text"],
 input[type="tel"],
