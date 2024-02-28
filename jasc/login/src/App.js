@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import SignUp from "./components/signup.component";
 import Login from "./components/login.component";
 import SuperAdminlogin from "./components/SuperAdminlogin";
+import adminDashboard from "./components/admin-dashboard";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
                 path="/SuperAdminlogin"
                 element={<SuperAdminlogin />}
               />
+              <Route path="/admin-dashboard" element={<adminDashboard />}/>
               
               <Route path="/" element={<SignUp />} />
               <Route path="/sign-up" element={<SignUp />} />

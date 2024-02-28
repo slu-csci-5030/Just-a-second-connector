@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import adminDashboard from './admin-dashboard';
 
 const SuperAdminlogin = () => {
     const [username, setUsername] = useState('');
@@ -16,7 +17,7 @@ const SuperAdminlogin = () => {
             setSubmittedUsername(username);
             setSubmittedPassword(password);
             // Redirect to admin dashboard
-            navigate('/admin-dashboard');
+            navigate('/adminDashboard');
         } else {
             // Display an error message or handle invalid credentials
             alert('Invalid username or password');
