@@ -33,7 +33,10 @@ function ReferralForm() {
                         <input type="radio" id="community_partner" name="iam" value="community_partner" />
                         <label htmlFor="community_partner">A community partner (PO, community organization, etc.) referring a jobseeker</label>
                     </div>
-                    
+                    <div>
+                        <h1>Counter: {count}</h1>
+                        <button onClick={increment}>Increment</button>
+                     </div>
                 </div>
             </form>
         </div>
