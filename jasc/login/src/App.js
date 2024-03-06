@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import SignUp from "./components/signup.component";
 import Login from "./components/login.component";
+import JobSeekerForm from "./components/JobSeekerForm";
+
 
 
 
@@ -45,6 +47,7 @@ function App() {
               <Route path="/" element={<SignUp />} />
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/sign-in" element={<Login />} />
+              <Route path="/job-seeker-form" element={<JobSeekerForm />} />
             </Routes>
           </div>
         </div>

@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+# Just-a-second-connector
+
 In the project directory, you can run:
 
 ### npm start
@@ -6,6 +12,9 @@ In the project directory, you can run:
 
 ### npm run build
 
+=======
+>>>>>>> e9d095d5a016822fec7d82c0ca864aab28e30356
+>>>>>>> f829890b62d72a90641a7bfaca068a75a1c99f66
 Just a Second Connector.
 Hello there! Welcome to Just a Second Connector, a transformative project initiated by Transformative Workforce Academy (TWA). This platform addresses the unique needs of individuals associated with the Criminal Justice system seeking employment opportunities, connecting them with employers willing to provide a second chance. TWA currently relies on Google Docs to track both job seekers and employers, necessitating a more efficient system for matching the specific requirements of both groups. Just a Second Connector streamlines this process by providing a centralized platform for job seeker connections and employer matching. Our goal is to replace the existing Google Docs system, offering a comprehensive solution that facilitates the seamless tracking of progress for both job seekers and employers. Join us in this endeavor to make a positive impact and provide meaningful opportunities for those seeking a fresh start in the workforce.
 Current Progress:
@@ -49,5 +58,16 @@ Issues open and closed
 Include instructions in the README or ContributorGuide for how to run the test without running the entire service or app.
 Instruction to run the test without running the main service:
       Command: npm run test 
+<<<<<<< HEAD
 	
 Be in the form of a Pull Request to your team's repository.
+
+=======
+<<<<<<< HEAD
+	
+
+Be in the form of a Pull Request to your team's repository.
+
+=======
+>>>>>>> e9d095d5a016822fec7d82c0ca864aab28e30356
+>>>>>>> f829890b62d72a90641a7bfaca068a75a1c99f66
