@@ -10,7 +10,7 @@ function Homepage() {
   const [displayBriefing, setDisplayBriefing] = useState(false);
 
   const toggleBriefing = () => {
-    setDisplayBriefing(!displayBriefing);
+    setDisplayBriefing(true);
   };
   const redirectToReferralForm = () => {
     // Navigate to the ReferralForm component

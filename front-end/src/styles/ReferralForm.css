@@ -3,6 +3,21 @@ body {
     overflow-y: auto; 
 }
 
+.submitButton {
+    padding: 10px 20px; 
+    color: #ffffff; 
+    border: none;
+    border-radius: 10px; 
+    background-color: #005f73; 
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s; 
+  }
+
+  .submitButton:hover {
+    background-color: #ff9f1c; 
+  }
+
 .form-container {
     max-width: 400px;
     margin: 0 auto;
@@ -41,4 +56,27 @@ input[type="text"]::placeholder,
 input[type="tel"]::placeholder,
 input[type="email"]::placeholder {
     color: #ccc;
+}
+
+.form-container {
+    /* Your existing styles for the form container */
+}
+
+.blur {
+    filter: blur(5px);
+    transition: filter 0.5s ease-in-out;
+}
+
+.submitted-animation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-size: 1.5rem;
+    z-index: 9999;
 }
