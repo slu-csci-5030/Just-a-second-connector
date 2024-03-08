@@ -70,9 +70,7 @@
   text-align: center;
   display: auto; 
   position: relative;/* Temporarily set to block to ensure visibility */
-
   top: 120px;
-
 }
 
 .footer-content {
