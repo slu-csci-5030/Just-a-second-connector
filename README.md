@@ -50,4 +50,4 @@ Include instructions in the README or ContributorGuide for how to run the test w
 Instruction to run the test without running the main service:
       Command: npm run test 
 
-Be in the form of a Pull Request to your team's repository
+Be in the form of a Pull Request to your team's repository.
