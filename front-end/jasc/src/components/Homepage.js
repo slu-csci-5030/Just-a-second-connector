@@ -10,6 +10,7 @@ import instagramLogo from '../images/instagram_logo.jpg';
 function Homepage() {
   const [displayBriefing, setDisplayBriefing] = useState(true);
 
+  
   // Footer visibility logic
   useEffect(() => {
     const footer = document.querySelector('.footer');

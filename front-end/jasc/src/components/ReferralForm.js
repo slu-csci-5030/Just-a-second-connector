@@ -7,6 +7,7 @@ function ReferralForm() {
         <div className="form-container">
             <h1>Referral Form</h1>
             <form>
+                
                 <div className="form-group">
                     <label htmlFor="firstname">Jobseeker First Name</label>
                     <input type="text" id="firstname" name="firstname" placeholder="First Name" />

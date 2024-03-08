@@ -12,6 +12,7 @@ const QuestionnaireForm = () => {
         alert(JSON.stringify(entries, null, 2));
     };
 
+    
     const handleEducationLevelChange = (e) => {
         setShowAdditionalQuestion(e.target.value === "Did not complete high school");
     };
