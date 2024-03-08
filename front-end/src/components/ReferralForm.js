@@ -188,7 +188,7 @@ function ReferralForm() {
                     <label htmlFor="referrerorganization">Referrer Organization</label>
                     <input type="text" id="lastname" name="referrerorganization" placeholder="Organization" onChange={handleChange}/>
                     {formErrors.referrerorganization && <p className="error">{formErrors.referrerorganization}</p>}
-                </div>
+                </div> 
                 <div className="form-group">
                     <label htmlFor="email">Referrer Email</label>
                     <input type="email" id="email" name="referreremail" placeholder="Email" onChange={handleChange}/>
