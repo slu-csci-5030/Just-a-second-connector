@@ -3,10 +3,10 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - navyacharithabavirisetti
+      - srinivas
   pull_request:
     branches:
-      - navyacharithabavirisetti
+      - srinivas
 
 jobs:
   lint:
