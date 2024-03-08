@@ -82,6 +82,7 @@ input[type='submit']:hover {
   }
 }
 
+
 .blur {
   filter: blur(5px);
   transition: filter 0.5s ease-in-out;
