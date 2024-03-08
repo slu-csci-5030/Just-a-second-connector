@@ -39,7 +39,9 @@ and run only the component without running the entire service or app (33%).
 We are running only the npm test to run our login page as well as the test cases
 In your submission
 Identify the testing framework your team has agreed on by name
-React testing library.
+React testing library
+
+
 Identify the requirement, as defined in a GitHub Issue, by linking to the relevant issue.
 Issues open and closed
 
@@ -49,4 +51,3 @@ Instruction to run the test without running the main service:
       Command: npm run test 
 	
 Be in the form of a Pull Request to your team's repository.
-	
