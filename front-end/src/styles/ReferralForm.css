@@ -81,3 +81,26 @@ input[type='submit']:hover {
     justify-content: flex-start;
   }
 }
+
+
+.blur {
+  filter: blur(5px);
+  transition: filter 0.5s ease-in-out;
+}
+
+.submitted-animation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-size: 1.5rem;
+  z-index: 9999;
+}
+.error{
+  color: red;
+}
