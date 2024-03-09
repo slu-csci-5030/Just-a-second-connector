@@ -166,13 +166,12 @@ function ReferralForm() {
                 <div className="form-group">
                     <label>I am:</label>
                     <div>
-                        <input type="radio" id="jobseeker" name="iam" value="jobseeker" onChange={handleChange}/>
-                        <label htmlFor="jobseeker">A jobseeker and I want to sign up for the fall 2023 job fair</label>
+                        <label htmlFor="jobseeker"><input type="radio" id="jobseeker" name="iam" value="jobseeker" onChange={handleChange}/>A jobseeker and I want to sign up for the fall 2023 job fair</label>
                         
                     </div>
                     <div>
-                        <input type="radio" id="community_partner" name="iam" value="community_partner" onChange={handleChange}/>
-                        <label htmlFor="community_partner">A community partner (PO, community organization, etc.) referring a jobseeker</label>
+                        
+                        <label htmlFor="community_partner"><input type="radio" id="community_partner" name="iam" value="community_partner" onChange={handleChange}/>A community partner (PO, community organization, etc.) referring a jobseeker</label>
                         
                     </div>
                     {formErrors.iam && <p className="error">{formErrors.iam}</p>}
@@ -194,25 +193,28 @@ function ReferralForm() {
                     <input type="email" id="email" name="referreremail" placeholder="Email" onChange={handleChange}/>
                     {formErrors.referreremail && <p className="error">{formErrors.referreremail}</p>}
                 </div>
+                <br></br>
+                <br></br><br></br>
                 <label>Has the jobseeker been consistent in meeting your expectations (returning calls, coming to scheduled appointments, following through, etc.)?</label>
-                <div class="radio-buttons">
-                    <label for="rating1">1</label><br></br><br></br>
-                    <label for="rating2">2</label><br></br><br></br>
-                    <label for="rating3">3</label><br></br><br></br>
-                    <label for="rating4">4</label><br></br><br></br>
-                    <label for="rating5">5</label><br></br><br></br>
-                    
+                <br></br><br></br>
+                <div class="radio-button-icons">
+                    <label for="rating1">1</label><br></br>
+                    <label for="rating2">2</label><br></br>
+                    <label for="rating3">3</label><br></br>
+                    <label for="rating4">4</label><br></br>
+                    <label for="rating5">5</label><br></br>
                 </div>
                 <div class="radio-buttons">
-                    <label> <input type="radio" id="rating1" name="rating" value="1" onChange={handleChange}></input></label><br></br>
+                    <label><input type="radio" id="rating1" name="rating" value="1" onChange={handleChange}></input></label><br></br>
                     <label><input type="radio" id="rating2" name="rating" value="2" onChange={handleChange}></input></label><br></br>
                     <label><input type="radio" id="rating3" name="rating" value="3" onChange={handleChange}></input></label><br></br>
                     <label><input type="radio" id="rating4" name="rating" value="4" onChange={handleChange}></input></label><br></br>
                     <label><input type="radio" id="rating5" name="rating" value="5" onChange={handleChange}></input></label><br></br>
                     {formErrors.rating && <p className="error">{formErrors.rating}</p>}
                 </div>
+                <br></br><br></br>
                 <label>What barriers have you identified that the jobseeker has that relate to employment? (Check as many as apply.)</label>
-
+                <br></br><br></br>
                     <div class="checkbox-container">
                         <label for="barrier1"><input type="checkbox" id="barrier1" name="barriers" value="Transportation" onChange={handleCheckboxChange}></input>  Transportation </label><br></br>
                     </div>
@@ -253,7 +255,9 @@ function ReferralForm() {
                         <label for="barrier13"><input type="checkbox" id="barrier13" name="barriers" value="Other..." onChange={handleCheckboxChange}></input>  Other...</label><br></br>
                     </div>
                     {formErrors.barriers && <p className="error">{formErrors.barriers}</p>}
+                    <br></br><br></br>
                 <label>What convictions does the jobseeker have?</label>
+                <br></br><br></br>
                     <div class="checkbox-container">
                         <label for="barrier1"><input type="checkbox" id="barrier1" name="convictions" value="Sex offense" onChange={handleCheckboxChange}></input>  Sex offense </label><br></br>
                     </div>
@@ -274,10 +278,12 @@ function ReferralForm() {
                     </div>
                     {formErrors.convictions && <p className="error">{formErrors.convictions}</p>}
                 <div className="form-group">
+                <br></br><br></br>
                     <label htmlFor="shortanswer">Date of most recent felony conviction</label>
                     <input type="text" id="shortanswer" name="felonyDate" placeholder="Answer" rows="6" cols="30" onChange={handleChange}></input>
                     {formErrors.felonyDate && <p className="error">{formErrors.felonyDate}</p>}
                 </div>
+                <br></br><br></br>
                 <div className="form-group">
                     <label>Does the jobseeker know that you are referring them to SLU TWA?</label>
                     <div>
@@ -289,19 +295,23 @@ function ReferralForm() {
                     {formErrors.knowsReferral && <p className="error">{formErrors.knowsReferral}</p>}
 
                 </div>   
+                <br></br><br></br>
                 <div className="form-group">
                     <label htmlFor="shortanswer">Is there anything else you want TWA to know about the jobseeker you are referring? (Optional)</label>
                     <input type="text" id="shortanswer" name="additionalInfo" placeholder="Answer" rows="6" cols="30" onChange={handleChange}></input>
                     {formErrors.additionalInfo && <p className="error">{formErrors.additionalInfo}</p>}
 
                 </div>
+                <br></br><br></br>
                 <div className="form-group">
                     <label htmlFor="description">  Tell Us About Yourself</label>
                     <input type="text" id="description" name="selfDescription" placeholder="Description" rows="6" cols="30" onChange={handleChange}></input>
                     {formErrors.selfDescription && <p className="error">{formErrors.selfDescription}</p>}
 
                 </div>
+                <br></br><br></br>
                 <label>What barriers or issues do you want us to know about that might make it hard for you to look for or keep a job? (Check as many boxes as apply.)</label>
+                <br></br><br></br>
                     <div class="checkbox-container">
                         <label for="barrier1"><input type="checkbox" id="barrier1" name="selfBarriers" value="Transportation" onChange={handleCheckboxChange}></input>  Transportation </label><br></br>
                     </div>
@@ -342,8 +352,9 @@ function ReferralForm() {
                         <label for="barrier13"><input type="checkbox" id="barrier13" name="selfBarriers" value="Other..." onChange={handleCheckboxChange}></input>  Other...</label><br></br>
                     </div>
                     {formErrors.selfBarriers && <p className="error">{formErrors.selfBarriers}</p>}
-
+                    <br></br><br></br>
                 <label>We want to make sure to match you with employers who do not have restrictions on hiring someone with your particular background.  To your comfort level, please check any boxes for charges that you think will come up when an employer does your background check:</label>
+                <br></br><br></br>
                     <div class="checkbox-container">
                         <label for="barrier1"><input type="checkbox" id="barrier1" name="backgroundCheckIssues" value="Sex offense" onChange={handleCheckboxChange}></input>  Sex offense </label><br></br>
                     </div>
@@ -367,12 +378,13 @@ function ReferralForm() {
                     </div>
                     {formErrors.backgroundCheckIssues && <p className="error">{formErrors.backgroundCheckIssues}</p>}
 
-
+                    <br></br><br></br>
                 <div className="form-group">
                     <label htmlFor="description">  Date of most recent felony conviction (estimate to the best of your knowledge)</label>
                     <input type="text" id="description" name="felonyConvictionDate" placeholder="Description" rows="6" cols="30" onChange={handleChange}></input>
                     {formErrors.felonyConvictionDate && <p className="error">{formErrors.felonyConvictionDate}</p>}
                 </div>
+                <br></br><br></br>
                 <div className="form-group">
                     <label htmlFor="description">  (Optional) Is there anything else we should know before we pair you with a volunteer job coach?</label>
                     <input type="text" id="description" name="additionalComments" placeholder="Description" rows="6" cols="30" onChange={handleChange}></input>
