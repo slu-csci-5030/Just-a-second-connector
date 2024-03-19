@@ -1,81 +1,60 @@
 // ReferralForm.js
-import React from 'react';
-import { useState } from 'react';
 import '../styles/ReferralForm.css';
+import axios from 'axios';
+import React, { useState } from 'react';
+
+const initialFormData = {
+    firstname: '',
+    lastname: '',
+    phone: '',
+    email: '',
+    iam: '',
+    referrername: '',
+    referrerorganization: '',
+    referreremail: '',
+    rating: '',
+    barriers: [],
+    convictions: [],
+    felonyDate: '',
+    knowsReferral: '',
+    additionalInfo: '',
+    selfDescription: '',
+    selfBarriers: [],
+    backgroundCheckIssues: [],
+    felonyConvictionDate: '',
+    additionalComments: '',
+};
 
 function ReferralForm() {
     const [isSubmit, setSubmit] = useState(false);
-    const [jobSeekers, setJobSeekers] = useState([]);
-    const [formData, setFormData] = useState({
-        firstname: '',
-        lastname: '',
-        phone: '',
-        email: '',
-        iam: '',
-        referrername: '',
-        referrerorganization: '',
-        referreremail: '',
-        rating: '',
-        barriers: [],
-        convictions: [],
-        felonyDate: '',
-        knowsReferral: '',
-        additionalInfo: '',
-        selfDescription: '',
-        selfBarriers: [],
-        backgroundCheckIssues: [],
-        felonyConvictionDate: '',
-        additionalComments: '',
-    });
-
-    const [formErrors, setFormErrors] = useState({
-        firstname: '',
-        lastname: '',
-        phone: '',
-        email: '',
-        iam: '',
-        referrername: '',
-        referrerorganization: '',
-        referreremail: '',
-        rating: '',
-        felonyDate: '',
-        knowsReferral: '',
-        selfDescription: '',
-        felonyConvictionDate: '',
-    });
+    const [formData, setFormData] = useState(initialFormData);
+    const [formErrors, setFormErrors] = useState({});
 
     const handleChange = (e) => {
+        const { name, value } = e.target;
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value,
+            [name]: value,
         });
-
-        // Clear previous error message when user starts typing
         setFormErrors({
             ...formErrors,
-            [e.target.name]: '',
+            [name]: '',
         });
     };
 
     const handleCheckboxChange = (e) => {
         const { name, value, checked } = e.target;
-
-        // Update the corresponding array based on checkbox changes
-        setFormData((prevFormData) => {
-            const updatedArray = checked
-                ? [...(prevFormData[name] || []), value]
-                : (prevFormData[name] || []).filter((item) => item !== value);
-
-            return {
-                ...prevFormData,
-                [name]: updatedArray,
-            };
+        const updatedArray = checked
+            ? [...formData[name], value]
+            : formData[name].filter((item) => item !== value);
+        setFormData({
+            ...formData,
+            [name]: updatedArray,
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        
 
         // Validate form fields
         const errors = {};
@@ -90,58 +69,24 @@ function ReferralForm() {
             setFormErrors(errors);
             return;
         }
-        setJobSeekers((prevJobSeekers) => [...prevJobSeekers, formData]);
-        setSubmit(true);
-        
 
-        
-      
+        try {
+            // Send form data to the server
+            await axios.post('http://localhost:3001/referral_forms', formData);
+            setSubmit(true);
 
-        // Clear the form data and errors after submission
-        setFormData({
-            firstname: '',
-            lastname: '',
-            phone: '',
-            email: '',
-            iam: '',
-            referrername: '',
-            referrerorganization: '',
-            referreremail: '',
-            rating: '',
-            barriers: [],
-            convictions: [],
-            felonyDate: '',
-            knowsReferral: '',
-            additionalInfo: '',
-            selfDescription: '',
-            selfBarriers: [],
-            backgroundCheckIssues: [],
-            felonyConvictionDate: '',
-            additionalComments: '',
-        });
-        setFormErrors({
-            firstname: '',
-            lastname: '',
-            phone: '',
-            email: '',
-            iam: '',
-            referrername: '',
-            referrerorganization: '',
-            referreremail: '',
-            rating: '',
-            felonyDate: '',
-            knowsReferral: '',
-            selfDescription: '',
-            felonyConvictionDate: '',
-        });
-
-        
+            // Clear the form data after submission
+            setFormData(initialFormData);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
     };
+
     return (
         <div>
             <div className={`form-container ${isSubmit ? 'blur' : ''}`}>
-            <h1>Referral Form</h1>
-            <form onSubmit={handleSubmit}>
+                <h1>Referral Form</h1>
+                <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="firstname">Jobseeker First Name</label>
                     <input type="text" id="firstname" name="firstname" placeholder="First Name" onChange={handleChange}/>
@@ -391,8 +336,8 @@ function ReferralForm() {
                     {formErrors.additionalComments && <p className="error">{formErrors.additionalComments}</p>}
 
                 </div>
-                <button type="submit">Submit</button>
-            </form>
+                    <button type="submit">Submit</button>
+                </form>
             </div>
             {isSubmit && (
                 <div className="submitted-animation">
@@ -400,7 +345,6 @@ function ReferralForm() {
                 </div>
             )}
         </div>
-        
     );
 }
 
