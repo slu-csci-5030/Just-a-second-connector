@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import ReferralForm from "./ReferralForm";
-import QuestionnaireForm from "./QuestionnaireForm";
+import EmployerRegistrationForm from "./EmployerRegistrationForm";
 import "../styles/Homepage.css";
 import facebookLogo from '../images/facebook_logo.png';
 import twitterLogo from '../images/twitter_logo.png';
@@ -43,7 +43,7 @@ function Homepage() {
               <Link to="/referral-form">Referral Form</Link>
             </div>
             <div className="button">
-              <Link to="/questionnaire-form">Questionnaire Form</Link>
+              <Link to="/employer-registration-form">Employer Registration Form</Link>
             </div>
           </div>
         </nav>
@@ -63,7 +63,7 @@ function Homepage() {
             </>
           )} />
           <Route path="/referral-form" component={ReferralForm} />
-          <Route path="/questionnaire-form" component={QuestionnaireForm} />
+          <Route path="/employer-registration-form" component={EmployerRegistrationForm} />
         </Switch>
 
         <footer className="footer">
