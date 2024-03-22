@@ -1,0 +1,2 @@
+Add an employer registration button to the nav bar.
+Given the functionality such that it opens the new page and gave the header container as "Employer registration form".
