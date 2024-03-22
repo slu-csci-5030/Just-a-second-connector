@@ -4,13 +4,9 @@ on:
   push:
     branches:
       - snandakumar2912
-  pull_request:
-    branches:
-      - snandakumar2912
 
 jobs:
-  lint:
-    name: Lint
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,12 +14,14 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: '14'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run ESLint
-        run: npx eslint
+      - name: Code linting
+        run: npm run lint  # Replace with your linting command/script
+
+      # Add more steps for testing, building, deploying, etc.

@@ -1,4 +1,3 @@
-// signup.component.test.js
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import SignUp from '../signup.component.js';
