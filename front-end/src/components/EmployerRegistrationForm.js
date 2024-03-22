@@ -72,8 +72,10 @@ const EmployerRegistrationForm = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('Form submitted');
+        console.log('Form Data:', formData);
 
         // Validate form fields
         const errors = {};
@@ -89,43 +91,63 @@ const EmployerRegistrationForm = () => {
             return;
         }
 
-        // Perform form submission logic here
-        // For example, you can send formData to your backend server
-
-        setSubmit(true);
-
-        // Clear the form data and errors after submission
-        setFormData({
-            name: '',
-            email: '',
-            companyName: '',
-            companyLocation: '',
-            hiringManagerQuestion: '',
-            specificPositions: '',
-            payRate: '',
-            eligibleBenefits: '',
-            shifts: [],
-            hiringType: '',
-            jobDescriptionFile: null,
-            offensesQuestion: '',
-            videoFile: null,
-            additionalInformation: '',
+        // Create a FormData object to include files
+        const formDataWithFiles = new FormData();
+        Object.entries(formData).forEach(([key, value]) => {
+            if (value instanceof File) {
+                formDataWithFiles.append(key, value, value.name);
+            } else {
+                formDataWithFiles.append(key, value);
+            }
         });
-        setFormErrors({
-            name: '',
-            email: '',
-            companyName: '',
-            companyLocation: '',
-            hiringManagerQuestion: '',
-            specificPositions: '',
-            payRate: '',
-            eligibleBenefits: '',
-            hiringType: '',
-            jobDescriptionFile: '',
-            offensesQuestion: '',
-            videoFile: '',
-            additionalInformation: '',
-        });
+
+        try {
+            const response = await fetch('/register', {
+                method: 'POST',
+                body: formDataWithFiles,
+            });
+
+            if (response.ok) {
+                console.log('Form submitted successfully');
+                setSubmit(true);
+                // Clear the form data and errors after submission
+                setFormData({
+                    name: '',
+                    email: '',
+                    companyName: '',
+                    companyLocation: '',
+                    hiringManagerQuestion: '',
+                    specificPositions: '',
+                    payRate: '',
+                    eligibleBenefits: '',
+                    shifts: [],
+                    hiringType: '',
+                    jobDescriptionFile: null,
+                    offensesQuestion: '',
+                    videoFile: null,
+                    additionalInformation: '',
+                });
+                setFormErrors({
+                    name: '',
+                    email: '',
+                    companyName: '',
+                    companyLocation: '',
+                    hiringManagerQuestion: '',
+                    specificPositions: '',
+                    payRate: '',
+                    eligibleBenefits: '',
+                    hiringType: '',
+                    jobDescriptionFile: '',
+                    offensesQuestion: '',
+                    videoFile: '',
+                    additionalInformation: '',
+                });
+            } else {
+                console.error('Error submitting form');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
 
     return (
