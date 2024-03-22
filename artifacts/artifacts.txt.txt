@@ -1,1 +1,0 @@
-This folder contains the images of how the created "employer registration form" will be navigated upon clicking the button from home page.
