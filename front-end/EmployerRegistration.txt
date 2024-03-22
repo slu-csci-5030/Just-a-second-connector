@@ -1,0 +1,4 @@
+Added text fields in the EmployerRegistration form for:
+
+Are you the hiring manager or person(s) making final employment hiring decisions? If yes, please list name and best method of contact. If not, whom is the final point of contact?
+Please list the specific positions for which your company will be hiring.
