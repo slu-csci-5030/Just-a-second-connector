@@ -1,0 +1,4 @@
+Added text fields in the EmployerRegistration form for:
+
+What is the typical pay rate associated with these positions?
+Are these positions eligible for benefits? If so, which ones?

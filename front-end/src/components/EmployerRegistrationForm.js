@@ -12,12 +12,6 @@ const EmployerRegistrationForm = () => {
         specificPositions: '',
         payRate: '',
         eligibleBenefits: '',
-        shifts: [],
-        hiringType: '',
-        jobDescriptionFile: null,
-        offensesQuestion: '',
-        videoFile: null,
-        additionalInformation: '',
     });
 
     const [formErrors, setFormErrors] = useState({
@@ -29,11 +23,6 @@ const EmployerRegistrationForm = () => {
         specificPositions: '',
         payRate: '',
         eligibleBenefits: '',
-        hiringType: '',
-        jobDescriptionFile: '',
-        offensesQuestion: '',
-        videoFile: '',
-        additionalInformation: '',
     });
 
     const handleChange = (e) => {
@@ -104,12 +93,6 @@ const EmployerRegistrationForm = () => {
             specificPositions: '',
             payRate: '',
             eligibleBenefits: '',
-            shifts: [],
-            hiringType: '',
-            jobDescriptionFile: null,
-            offensesQuestion: '',
-            videoFile: null,
-            additionalInformation: '',
         });
         setFormErrors({
             name: '',
@@ -120,11 +103,6 @@ const EmployerRegistrationForm = () => {
             specificPositions: '',
             payRate: '',
             eligibleBenefits: '',
-            hiringType: '',
-            jobDescriptionFile: '',
-            offensesQuestion: '',
-            videoFile: '',
-            additionalInformation: '',
         });
     };
 
@@ -172,59 +150,6 @@ const EmployerRegistrationForm = () => {
                         <label htmlFor="eligibleBenefits">Are these positions eligible for benefits? If so, which ones?</label>
                         <textarea id="eligibleBenefits" name="eligibleBenefits" placeholder="Answer here" value={formData.eligibleBenefits} onChange={handleChange}></textarea>
                         {formErrors.eligibleBenefits && <p className="error">{formErrors.eligibleBenefits}</p>}
-                    </div>
-                    <div className="form-group">
-                        <label>What shifts does your company have available?</label>
-                        <div>
-                            <input type="checkbox" id="1st-shift" name="shifts" value="1st Shift (9am-5pm)" checked={formData.shifts.includes('1st Shift (9am-5pm)')} onChange={handleChange} />
-                            <label htmlFor="1st-shift">1st Shift (9am-5pm)</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="2nd-shift" name="shifts" value="2nd Shift (5pm-12am)" checked={formData.shifts.includes('2nd Shift (5pm-12am)')} onChange={handleChange} />
-                            <label htmlFor="2nd-shift">2nd Shift (5pm-12am)</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="3rd-shift" name="shifts" value="3rd Shift (12am-8am)" checked={formData.shifts.includes('3rd Shift (12am-8am)')} onChange={handleChange} />
-                            <label htmlFor="3rd-shift">3rd Shift (12am-8am)</label>
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label>Are you looking for an immediate hire or do you have ongoing positions throughout the year?</label>
-                        <div>
-                            <input type="radio" id="immediate-hire" name="hiringType" value="Immediate hire" checked={formData.hiringType === 'Immediate hire'} onChange={handleChange} />
-                            <label htmlFor="immediate-hire">Immediate hire</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="ongoing" name="hiringType" value="Ongoing" checked={formData.hiringType === 'Ongoing'} onChange={handleChange} />
-                            <label htmlFor="ongoing">Ongoing</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="both" name="hiringType" value="Both" checked={formData.hiringType === 'Both'} onChange={handleChange} />
-                            <label htmlFor="both">Both</label>
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label>To ensure your individualized slide deck contains videos of candidates most relevant to your hiring needs, please consider uploading job descriptions for the roles you will be hiring for below.</label>
-                        <input type="file" id="jobDescriptionFile" name="jobDescriptionFile" onChange={handleChange} />
-                        {formErrors.jobDescriptionFile && <p className="error">{formErrors.jobDescriptionFile}</p>}
-                    </div>
-                    <div className="form-group">
-                        <label>Are there any offenses that would render someone ineligible for these roles? If so, which ones? TWA screens all candidates and will only introduce candidates to companies with roles for which they are eligible.</label>
-                        <textarea id="offensesQuestion" name="offensesQuestion" placeholder="Answer here" value={formData.offensesQuestion} onChange={handleChange}></textarea>
-                        {formErrors.offensesQuestion && <p className="error">{formErrors.offensesQuestion}</p>}
-                    </div>
-                    <div className="form-group">
-                        <label>(Optional) Past employer feedback has indicated that recruiters would like the opportunity to advocate for their company to jobseekers before they make decisions about their employment preferences. Employers are therefore invited to upload a two-minute video pitching their company to jobseekers. Feel free to cover topics such as available positions, pay, benefits, work environment, and any other perks of working for your company.</label>
-                        <input type="file" id="videoFile" name="videoFile" onChange={handleChange} />
-                        {formErrors.videoFile && <p className="error">{formErrors.videoFile}</p>}
-                    </div>
-                    <div className="form-group">
-                        <label>Is there any additional information TWA should relay to jobseekers to best prepare them for your company's hiring process?</label>
-                        <textarea id="additionalInformation" name="additionalInformation" placeholder="Answer here" value={formData.additionalInformation} onChange={handleChange}></textarea>
-                        {formErrors.additionalInformation && <p className="error">{formErrors.additionalInformation}</p>}
-                    </div>
-                    <div>
-                        <button type="submit">Submit</button>
                     </div>
                 </form>
             </div>
