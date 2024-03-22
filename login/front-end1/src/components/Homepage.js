@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import ReferralForm from "./ReferralForm";
-import QuestionnaireForm from "./QuestionnaireForm";
+import EmployerRegistrationForm from "./EmployerRegistrationForm";
 import "../styles/Homepage.css";
 import facebookLogo from '../images/facebook_logo.png';
 import twitterLogo from '../images/twitter_logo.png';
 import instagramLogo from '../images/instagram_logo.jpg';
+import QuestionnaireForm from "./QuestionnaireForm";
+import AdminLogin from "./AdminLogin";
+import AdminDashBoard from './AdminDashBoard';
 
 function Homepage() {
   const [displayBriefing, setDisplayBriefing] = useState(true);
@@ -43,7 +46,10 @@ function Homepage() {
               <Link to="/referral-form">Referral Form</Link>
             </div>
             <div className="button">
-              <Link to="/questionnaire-form">Questionnaire Form</Link>
+              <Link to="/employer-registration-form">Employer Registration Form</Link>
+            </div>
+            <div className="button">
+              <Link to="/admin-login">Admin</Link>
             </div>
           </div>
         </nav>
@@ -63,7 +69,9 @@ function Homepage() {
             </>
           )} />
           <Route path="/referral-form" component={ReferralForm} />
-          <Route path="/questionnaire-form" component={QuestionnaireForm} />
+          <Route path="/employer-registration-form" component={EmployerRegistrationForm} />
+          <Route path="/admin-login" component={AdminLogin} /> 
+          <Route path="/admin-dashboard" exact component={AdminDashBoard} /> 
         </Switch>
 
         <footer className="footer">

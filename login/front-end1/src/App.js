@@ -3,7 +3,7 @@ import React from "react";
 import Homepage from "./components/Homepage";
 import "./App.css";
 import "./components/ReferralForm";
-import "./components/QuestionnaireForm"
+import "./components/EmployerRegistrationForm"
 
 function App() {
   return (
