@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../styles/EmployerRegistrationForm.css';
 
 const EmployerRegistrationForm = () => {
-    const [isSubmit, setSubmit] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -92,7 +91,6 @@ const EmployerRegistrationForm = () => {
         // Perform form submission logic here
         // For example, you can send formData to your backend server
 
-        setSubmit(true);
 
         // Clear the form data and errors after submission
         setFormData({
@@ -130,7 +128,7 @@ const EmployerRegistrationForm = () => {
 
     return (
         <div>
-            <div className={`form-container ${isSubmit ? 'blur' : ''}`}>
+            <div className={`form-container`}>
                 <h1>Employer Registration Form</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
@@ -223,16 +221,8 @@ const EmployerRegistrationForm = () => {
                         <textarea id="additionalInformation" name="additionalInformation" placeholder="Answer here" value={formData.additionalInformation} onChange={handleChange}></textarea>
                         {formErrors.additionalInformation && <p className="error">{formErrors.additionalInformation}</p>}
                     </div>
-                    <div>
-                        <button type="submit">Submit</button>
-                    </div>
                 </form>
             </div>
-            {isSubmit && (
-                <div className="submitted-animation">
-                    Employer Registration Form Submitted Successfully!
-                </div>
-            )}
         </div>
     );
 };

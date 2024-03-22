@@ -69,23 +69,7 @@ textarea {
     margin-right: 15px;
 }
 
-/* Submit button styles */
-button {
-    display: block;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #003DA5;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
-}
 
-button:hover {
-    background-color:#002D72;
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
