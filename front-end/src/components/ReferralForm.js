@@ -73,11 +73,10 @@ function ReferralForm() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         
-
-        // Validate form fields
+        
         const errors = {};
         Object.keys(formData).forEach((key) => {
             if (!formData[key]) {
@@ -90,7 +89,19 @@ function ReferralForm() {
             setFormErrors(errors);
             return;
         }
+        const response = await fetch("http://localhost:8080/demo", {
+            method:'POST',
+            body:JSON.stringify(formData),
+            headers:{
+                'Content-Type':'application/json'
+            }
+
+        })
+        const data= await response.json();
+        console.log(data);  
         setJobSeekers((prevJobSeekers) => [...prevJobSeekers, formData]);
+        
+       
         setSubmit(true);
         
 
@@ -197,14 +208,14 @@ function ReferralForm() {
                 <br></br><br></br>
                 <label>Has the jobseeker been consistent in meeting your expectations (returning calls, coming to scheduled appointments, following through, etc.)?</label>
                 <br></br><br></br>
-                <div class="radio-button-icons">
-                    <label for="rating1">1</label><br></br>
-                    <label for="rating2">2</label><br></br>
-                    <label for="rating3">3</label><br></br>
-                    <label for="rating4">4</label><br></br>
-                    <label for="rating5">5</label><br></br>
+                <div className="radio-button-icons">
+                    <label htmlFor="rating1">1</label><br></br>
+                    <label htmlFor="rating2">2</label><br></br>
+                    <label htmlFor="rating3">3</label><br></br>
+                    <label htmlFor="rating4">4</label><br></br>
+                    <label htmlFor="rating5">5</label><br></br>
                 </div>
-                <div class="radio-buttons">
+                <div className="radio-buttons">
                     <label><input type="radio" id="rating1" name="rating" value="1" onChange={handleChange}></input></label><br></br>
                     <label><input type="radio" id="rating2" name="rating" value="2" onChange={handleChange}></input></label><br></br>
                     <label><input type="radio" id="rating3" name="rating" value="3" onChange={handleChange}></input></label><br></br>
@@ -215,66 +226,66 @@ function ReferralForm() {
                 <br></br><br></br>
                 <label>What barriers have you identified that the jobseeker has that relate to employment? (Check as many as apply.)</label>
                 <br></br><br></br>
-                    <div class="checkbox-container">
-                        <label for="barrier1"><input type="checkbox" id="barrier1" name="barriers" value="Transportation" onChange={handleCheckboxChange}></input>  Transportation </label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier1"><input type="checkbox" id="barrier1" name="barriers" value="Transportation" onChange={handleCheckboxChange}></input>  Transportation </label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier2"><input type="checkbox" id="barrier2" name="barriers" value="Housing insecurity" onChange={handleCheckboxChange}></input> Housing insecurity</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier2"><input type="checkbox" id="barrier2" name="barriers" value="Housing insecurity" onChange={handleCheckboxChange}></input> Housing insecurity</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier3"><input type="checkbox" id="barrier3" name="barriers" value="Computer literacy" onChange={handleCheckboxChange}></input>  Computer literacy</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier3"><input type="checkbox" id="barrier3" name="barriers" value="Computer literacy" onChange={handleCheckboxChange}></input>  Computer literacy</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier4"><input type="checkbox" id="barrier4" name="barriers" value="ID documentation" onChange={handleCheckboxChange}></input> ID documentation</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier4"><input type="checkbox" id="barrier4" name="barriers" value="ID documentation" onChange={handleCheckboxChange}></input> ID documentation</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier5"><input type="checkbox" id="barrier5" name="barriers" value="Mental health" onChange={handleCheckboxChange}></input>  Mental health</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier5"><input type="checkbox" id="barrier5" name="barriers" value="Mental health" onChange={handleCheckboxChange}></input>  Mental health</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier6"><input type="checkbox" id="barrier6" name="barriers" value="Food insecurity" onChange={handleCheckboxChange}></input>  Food insecurity</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier6"><input type="checkbox" id="barrier6" name="barriers" value="Food insecurity" onChange={handleCheckboxChange}></input>  Food insecurity</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier7"><input type="checkbox" id="barrier7" name="barriers" value="Lack of educationi" onChange={handleCheckboxChange}></input>  Lack of education</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier7"><input type="checkbox" id="barrier7" name="barriers" value="Lack of educationi" onChange={handleCheckboxChange}></input>  Lack of education</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier8"><input type="checkbox" id="barrier8" name="barriers" value="Lack of work experience" onChange={handleCheckboxChange}></input>  Lack of work experience</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier8"><input type="checkbox" id="barrier8" name="barriers" value="Lack of work experience" onChange={handleCheckboxChange}></input>  Lack of work experience</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier9"><input type="checkbox" id="barrier9" name="barriers" value="Interview and/or work clothing" onChange={handleCheckboxChange}></input>  Interview and/or work clothing</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier9"><input type="checkbox" id="barrier9" name="barriers" value="Interview and/or work clothing" onChange={handleCheckboxChange}></input>  Interview and/or work clothing</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier10"><input type="checkbox" id="barrier10" name="barriers" value="Childcare" onChange={handleCheckboxChange}></input>  Childcare</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier10"><input type="checkbox" id="barrier10" name="barriers" value="Childcare" onChange={handleCheckboxChange}></input>  Childcare</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier11"><input type="checkbox" id="barrier11" name="barriers" value="Disability" onChange={handleCheckboxChange}></input>  Disability</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier11"><input type="checkbox" id="barrier11" name="barriers" value="Disability" onChange={handleCheckboxChange}></input>  Disability</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier12"><input type="checkbox" id="barrier12" name="barriers" value="None" onChange={handleCheckboxChange}></input>  Unknown</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier12"><input type="checkbox" id="barrier12" name="barriers" value="None" onChange={handleCheckboxChange}></input>  Unknown</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier13"><input type="checkbox" id="barrier13" name="barriers" value="Other..." onChange={handleCheckboxChange}></input>  Other...</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier13"><input type="checkbox" id="barrier13" name="barriers" value="Other..." onChange={handleCheckboxChange}></input>  Other...</label><br></br>
                     </div>
                     {formErrors.barriers && <p className="error">{formErrors.barriers}</p>}
                     <br></br><br></br>
                 <label>What convictions does the jobseeker have?</label>
                 <br></br><br></br>
-                    <div class="checkbox-container">
-                        <label for="barrier1"><input type="checkbox" id="barrier1" name="convictions" value="Sex offense" onChange={handleCheckboxChange}></input>  Sex offense </label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier1"><input type="checkbox" id="barrier1" name="convictions" value="Sex offense" onChange={handleCheckboxChange}></input>  Sex offense </label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier2"><input type="checkbox" id="barrier2" name="convictions" value="Violent offense" onChange={handleCheckboxChange}></input> Violent offense</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier2"><input type="checkbox" id="barrier2" name="convictions" value="Violent offense" onChange={handleCheckboxChange}></input> Violent offense</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier3"><input type="checkbox" id="barrier3" name="convictions" value="Armed Criminal Action" onChange={handleCheckboxChange}></input>  Armed Criminal Action</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier3"><input type="checkbox" id="barrier3" name="convictions" value="Armed Criminal Action" onChange={handleCheckboxChange}></input>  Armed Criminal Action</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier4"><input type="checkbox" id="barrier4" name="convictions" value="Offense involving children" onChange={handleCheckboxChange}></input> Offense involving children</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier4"><input type="checkbox" id="barrier4" name="convictions" value="Offense involving children" onChange={handleCheckboxChange}></input> Offense involving children</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier5"><input type="checkbox" id="barrier5" name="convictions" value="Theft" onChange={handleCheckboxChange}></input>  Theft</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier5"><input type="checkbox" id="barrier5" name="convictions" value="Theft" onChange={handleCheckboxChange}></input>  Theft</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier6"><input type="checkbox" id="barrier6" name="convictions" value="Drug-related offense" onChange={handleCheckboxChange}></input>  Drug-related offense</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier6"><input type="checkbox" id="barrier6" name="convictions" value="Drug-related offense" onChange={handleCheckboxChange}></input>  Drug-related offense</label><br></br>
                     </div>
                     {formErrors.convictions && <p className="error">{formErrors.convictions}</p>}
                 <div className="form-group">
@@ -312,69 +323,69 @@ function ReferralForm() {
                 <br></br><br></br>
                 <label>What barriers or issues do you want us to know about that might make it hard for you to look for or keep a job? (Check as many boxes as apply.)</label>
                 <br></br><br></br>
-                    <div class="checkbox-container">
-                        <label for="barrier1"><input type="checkbox" id="barrier1" name="selfBarriers" value="Transportation" onChange={handleCheckboxChange}></input>  Transportation </label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier1"><input type="checkbox" id="barrier1" name="selfBarriers" value="Transportation" onChange={handleCheckboxChange}></input>  Transportation </label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier2"><input type="checkbox" id="barrier2" name="selfBarriers" value="Housing insecurity"onChange={handleCheckboxChange}></input> Housing insecurity</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier2"><input type="checkbox" id="barrier2" name="selfBarriers" value="Housing insecurity"onChange={handleCheckboxChange}></input> Housing insecurity</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier3"><input type="checkbox" id="barrier3" name="selfBarriers" value="Computer literacy" onChange={handleCheckboxChange}></input>  Computer literacy</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier3"><input type="checkbox" id="barrier3" name="selfBarriers" value="Computer literacy" onChange={handleCheckboxChange}></input>  Computer literacy</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier4"><input type="checkbox" id="barrier4" name="selfBarriers" value="ID documentation" onChange={handleCheckboxChange}></input> ID documentation</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier4"><input type="checkbox" id="barrier4" name="selfBarriers" value="ID documentation" onChange={handleCheckboxChange}></input> ID documentation</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier5"><input type="checkbox" id="barrier5" name="selfBarriers" value="Mental health" onChange={handleCheckboxChange}></input>  Mental health</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier5"><input type="checkbox" id="barrier5" name="selfBarriers" value="Mental health" onChange={handleCheckboxChange}></input>  Mental health</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier6"><input type="checkbox" id="barrier6" name="selfBarriers" value="Food insecurity" onChange={handleCheckboxChange}></input>  Food insecurity</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier6"><input type="checkbox" id="barrier6" name="selfBarriers" value="Food insecurity" onChange={handleCheckboxChange}></input>  Food insecurity</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier7"><input type="checkbox" id="barrier7" name="selfBarriers" value="Lack of educationi" onChange={handleCheckboxChange}></input>  Lack of education</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier7"><input type="checkbox" id="barrier7" name="selfBarriers" value="Lack of educationi" onChange={handleCheckboxChange}></input>  Lack of education</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier8"><input type="checkbox" id="barrier8" name="selfBarriers" value="Lack of work experience"onChange={handleCheckboxChange}></input>  Lack of work experience</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier8"><input type="checkbox" id="barrier8" name="selfBarriers" value="Lack of work experience"onChange={handleCheckboxChange}></input>  Lack of work experience</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier9"><input type="checkbox" id="barrier9" name="selfBarriers" value="Interview and/or work clothing"onChange={handleCheckboxChange}></input>  Interview and/or work clothing</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier9"><input type="checkbox" id="barrier9" name="selfBarriers" value="Interview and/or work clothing"onChange={handleCheckboxChange}></input>  Interview and/or work clothing</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier10"><input type="checkbox" id="barrier10" name="selfBarriers" value="Childcare" onChange={handleCheckboxChange}></input>  Childcare</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier10"><input type="checkbox" id="barrier10" name="selfBarriers" value="Childcare" onChange={handleCheckboxChange}></input>  Childcare</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier11"><input type="checkbox" id="barrier11" name="selfBarriers" value="Disability" onChange={handleCheckboxChange}></input>  Disability</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier11"><input type="checkbox" id="barrier11" name="selfBarriers" value="Disability" onChange={handleCheckboxChange}></input>  Disability</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier12"><input type="checkbox" id="barrier12" name="selfBarriers" value="None" onChange={handleCheckboxChange}></input>  Unknown</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier12"><input type="checkbox" id="barrier12" name="selfBarriers" value="None" onChange={handleCheckboxChange}></input>  Unknown</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier13"><input type="checkbox" id="barrier13" name="selfBarriers" value="Other..." onChange={handleCheckboxChange}></input>  Other...</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier13"><input type="checkbox" id="barrier13" name="selfBarriers" value="Other..." onChange={handleCheckboxChange}></input>  Other...</label><br></br>
                     </div>
                     {formErrors.selfBarriers && <p className="error">{formErrors.selfBarriers}</p>}
                     <br></br><br></br>
                 <label>We want to make sure to match you with employers who do not have restrictions on hiring someone with your particular background.  To your comfort level, please check any boxes for charges that you think will come up when an employer does your background check:</label>
                 <br></br><br></br>
-                    <div class="checkbox-container">
-                        <label for="barrier1"><input type="checkbox" id="barrier1" name="backgroundCheckIssues" value="Sex offense" onChange={handleCheckboxChange}></input>  Sex offense </label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier1"><input type="checkbox" id="barrier1" name="backgroundCheckIssues" value="Sex offense" onChange={handleCheckboxChange}></input>  Sex offense </label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier2"><input type="checkbox" id="barrier2" name="backgroundCheckIssues" value="Violent offense" onChange={handleCheckboxChange}></input> Violent offense</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier2"><input type="checkbox" id="barrier2" name="backgroundCheckIssues" value="Violent offense" onChange={handleCheckboxChange}></input> Violent offense</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier3"><input type="checkbox" id="barrier3" name="backgroundCheckIssues" value="Armed Criminal Action" onChange={handleCheckboxChange}></input>  Armed Criminal Action</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier3"><input type="checkbox" id="barrier3" name="backgroundCheckIssues" value="Armed Criminal Action" onChange={handleCheckboxChange}></input>  Armed Criminal Action</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier4"><input type="checkbox" id="barrier4" name="backgroundCheckIssues" value="Offense involving children" onChange={handleCheckboxChange}></input> Offense involving children</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier4"><input type="checkbox" id="barrier4" name="backgroundCheckIssues" value="Offense involving children" onChange={handleCheckboxChange}></input> Offense involving children</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier5"><input type="checkbox" id="barrier5" name="backgroundCheckIssues" value="Theft" onChange={handleCheckboxChange}></input>  Theft</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier5"><input type="checkbox" id="barrier5" name="backgroundCheckIssues" value="Theft" onChange={handleCheckboxChange}></input>  Theft</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier6"><input type="checkbox" id="barrier6" name="backgroundCheckIssues" value="Drug-related offense" onChange={handleCheckboxChange}></input>  Drug-related offense</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier6"><input type="checkbox" id="barrier6" name="backgroundCheckIssues" value="Drug-related offense" onChange={handleCheckboxChange}></input>  Drug-related offense</label><br></br>
                     </div>
-                    <div class="checkbox-container">
-                        <label for="barrier7"><input type="checkbox" id="barrier7" name="backgroundCheckIssues" value="other.." onChange={handleCheckboxChange}></input>  Other..</label><br></br>
+                    <div className="checkbox-container">
+                        <label htmlFor="barrier7"><input type="checkbox" id="barrier7" name="backgroundCheckIssues" value="other.." onChange={handleCheckboxChange}></input>  Other..</label><br></br>
                     </div>
                     {formErrors.backgroundCheckIssues && <p className="error">{formErrors.backgroundCheckIssues}</p>}
 
