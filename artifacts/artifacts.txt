@@ -1,0 +1,6 @@
+This folder contains the images of how the created "employer registration form" have the 
+details of an employee, appended the following functionalities (i.e. EmployerRegistrationFormPage2.png):
+
+
+1. Inserted file upload option for the question
+2. Inserted text field

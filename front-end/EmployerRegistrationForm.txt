@@ -1,0 +1,7 @@
+Added file upload button :
+
+ (Optional) Past employer feedback has indicated that recruiters would like the opportunity to advocate for their company to jobseekers before they make decisions about their employment preferences. Employers are therefore invited to upload a two-minute video pitching their company to jobseekers. Feel free to cover topics such as available positions, pay, benefits, work environment, and any other perks of working for your company.
+
+Added text field :
+
+ Is there any additional information TWA should relay to jobseekers to best prepare them for your company's hiring process?
