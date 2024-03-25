@@ -1,4 +1,6 @@
 ### <a name="_ez64i0avioti"></a>**Code Coverage Radiator for "Just a Second Connector"**
+### Link to the team documentation on Information Radiator:
+## https://docs.google.com/document/d/1gwmZiz2CpkyYqdVP5qGnjFVxTJWaUy3W2Q2rQjnbsT0/edit
 **Overview Section**
 
 Overall Code Coverage Percentage: A large, central gauge or progress bar showing the current overall code coverage percentage, aiming for a target (e.g., >80%) to ensure high-quality code.
