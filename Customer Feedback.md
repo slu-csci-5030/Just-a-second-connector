@@ -2,7 +2,7 @@
 
 **Information Radiator for Customer feedback and satisfaction ratings**
 
-We can create an information radiator specifically focused on customer feedback and satisfaction ratings related to the program's services. Here's how we can approach it:
+Here's how we can approach it:
 
 1. **Data Source**:
    - Customer feedback and satisfaction ratings can be gathered through surveys sent to both job seekers and employers who have used the TWA platform.
