@@ -1,3 +1,6 @@
+**Link to the team documentation on Information Radiator:** https://docs.google.com/document/d/1gwmZiz2CpkyYqdVP5qGnjFVxTJWaUy3W2Q2rQjnbsT0/edit
+
+
 ***Goals and Objectives***
 
 
@@ -40,3 +43,6 @@ By focusing on these goals and objectives, the team can effectively collaborate,
 **Summary:**
 
 Identifying the goals and objectives for the Just a Second Connector (JSC) project involves understanding its scope, stakeholder needs, and team dynamics. By engaging stakeholders, including the Transformative Workforce Academy (TWA), job seekers, employers, and the project team, we define overarching goals aligned with TWA's mission. These goals are broken down into specific, measurable, achievable, relevant, and time-bound (SMART) objectives, ensuring they contribute directly to program effectiveness and team collaboration. Prioritization considers urgency, impact, and resource availability, while also fostering a positive team culture and promoting continuous learning and development. Clear documentation and communication of goals and objectives ensure shared understanding among stakeholders and team members, setting the stage for successful project implementation. Regular review and refinement ensure alignment with evolving stakeholder needs and project dynamics, driving progress toward achieving the JSC project's ultimate goal of facilitating employment opportunities for individuals with criminal justice backgrounds.
+
+
+
