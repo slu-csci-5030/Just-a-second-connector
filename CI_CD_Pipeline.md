@@ -1,3 +1,4 @@
+Link to the team documentation on Information Radiator: https://docs.google.com/document/d/1gwmZiz2CpkyYqdVP5qGnjFVxTJWaUy3W2Q2rQjnbsT0/edit?usp=sharing
 Continuous Integration/Continuous Delivery Pipeline Status
 
 Continuous Integration (CI) and Continuous Deliver (CD) are considered pillars of the development processes for Just a Second connector, an idea introduced by Transformative Workforce Academy (TWA). The subject of this paper is the current application of the CI/CD pipeline that examines the accomplishments, barriers and points of the pipeline retooling in order to guarantee the smooth process of the platform generation and operation.
