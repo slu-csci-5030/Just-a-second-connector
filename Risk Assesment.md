@@ -1,3 +1,6 @@
+**Link to the team documentation on Information Radiator: **
+https://docs.google.com/document/d/1gwmZiz2CpkyYqdVP5qGnjFVxTJWaUy3W2Q2rQjnbsT0/edit
+ 
 **Information Radiator for Risk assessment and mitigation strategies**
 
 **Risk Register:**
