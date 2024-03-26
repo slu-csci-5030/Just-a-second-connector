@@ -17,10 +17,12 @@ function Homepage() {
   useEffect(() => {
     const footer = document.querySelector('.footer');
     const onScroll = () => {
-      if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-        footer.classList.add('footer-visible');
-      } else {
-        footer.classList.remove('footer-visible');
+      if (footer) { // Check if footer is not null
+        if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+          footer.classList.add('footer-visible');
+        } else {
+          footer.classList.remove('footer-visible');
+        }
       }
     };
 
