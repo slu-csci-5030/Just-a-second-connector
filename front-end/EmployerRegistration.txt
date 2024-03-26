@@ -1,1 +1,1 @@
-Added text fields for Name and Email locations in the EmployerRegistration form.
+Validated EmployerRegistration form for empty fields.
