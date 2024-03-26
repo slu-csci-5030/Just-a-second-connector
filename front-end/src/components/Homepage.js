@@ -108,8 +108,9 @@ function Homepage() {
             </div>
           </div>
         </footer>
-        
+        </Switch>
       </div>
+      
     </Router>
   );
 }
