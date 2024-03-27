@@ -1,4 +1,1 @@
-Added checkboxes and radio buttons in the EmployerRegistration form for:
-
-What shifts does your company have available?
-Are you looking for an immediate hire or do you have ongoing positions throughout the year?
+Styled checkboxes and radiobuttons in employer registration form.
