@@ -1,102 +1,52 @@
+// Import required modules
 const express = require('express');
-const mongoose = require('mongoose');
-const multer = require('multer');
-const morgan = require('morgan');
-const path = require('path');
+const { Pool } = require('pg');
 
-// Set up 
+// Create an instance of Express
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = 3000; // Choose your desired port
 
-// Connect to MongoDB
-const MONGODB_URI = 'mongodb://localhost:27017/jasc';
-mongoose.connect(MONGODB_URI)
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch((err) => {
-    console.error('Error connecting to MongoDB:', err);
-  });
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-// Define the employer 
-const employerSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  companyName: { type: String, required: true },
-  companyLocation: { type: String, required: true },
-  hiringManagerQuestion: { type: String, required: true },
-  specificPositions: { type: String, required: true },
-  payRate: { type: String, required: true },
-  eligibleBenefits: { type: String, required: true },
-  shifts: [{ type: String }],
-  hiringType: { type: String, required: true },
-  jobDescriptionFile: { type: Buffer },
-  offensesQuestion: { type: String, required: true },
-  videoFile: { type: Buffer },
-  additionalInformation: { type: String, required: true }
+// PostgreSQL connection configuration
+const pool = new Pool({
+    user: 'your_username',
+    host: 'localhost',
+    database: 'your_database_name',
+    password: 'your_password',
+    port: 5432 // Default PostgreSQL port
 });
 
-const Employer = mongoose.model('Employer', employerSchema);
-
-// Set up multer for file uploads
-const upload = multer();
-
-// Middleware to parse request body
+// Middleware to parse JSON requests
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(morgan('dev')); 
 
-// Log incoming requests and responses
-// Route for handling employer registration form submissions
-app.post('/register', upload.fields([{ name: 'jobDescriptionFile' }, { name: 'videoFile' }]), (req, res) => {
-  console.log('Received form data:', req.body);
-  console.log('Received files:', req.files);
+// Route to handle employer registration form submission
+app.post('/register', async (req, res) => {
+    try {
+        // Extract form data from request body
+        const { name, email, companyName, companyLocation, hiringManagerQuestion, specificPositions, payRate, eligibleBenefits, shifts, hiringType, offensesQuestion, additionalInformation } = req.body;
 
-  const {
-    name,
-    email,
-    companyName,
-    companyLocation,
-    hiringManagerQuestion,
-    specificPositions,
-    payRate,
-    eligibleBenefits,
-    shifts,
-    hiringType,
-    offensesQuestion,
-    additionalInformation
-  } = req.body;
+        // Insert form data into PostgreSQL database
+        const client = await pool.connect();
+        try {
+            await client.query('BEGIN');
 
-  const jobDescriptionFile = req.files['jobDescriptionFile'] ? req.files['jobDescriptionFile'][0].buffer : null;
-  const videoFile = req.files['videoFile'] ? req.files['videoFile'][0].buffer : null;
+            const insertQuery = `
+                INSERT INTO employer_registration_forms (name, email, company_name, company_location, hiring_manager_question, specific_positions, pay_rate, eligible_benefits, shifts, hiring_type, offenses_question, additional_information)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+            `;
+            await client.query(insertQuery, [name, email, companyName, companyLocation, hiringManagerQuestion, specificPositions, payRate, eligibleBenefits, shifts, hiringType, offensesQuestion, additionalInformation]);
 
-  const newEmployer = new Employer({
-    name,
-    email,
-    companyName,
-    companyLocation,
-    hiringManagerQuestion,
-    specificPositions,
-    payRate,
-    eligibleBenefits,
-    shifts,
-    hiringType,
-    jobDescriptionFile,
-    offensesQuestion,
-    videoFile,
-    additionalInformation
-  });
-// Send the saved employer data in the response
-  newEmployer.save()
-    .then(savedEmployer => {
-      console.log('Employer registration successful:', savedEmployer);
-      res.json(savedEmployer); 
-    })
-    .catch(err => {
-      console.error('Error saving employer:', err);
-      res.status(400).json('Error: ' + err);
-    });
+            await client.query('COMMIT');
+            res.status(200).send('Form submitted successfully');
+        } finally {
+            client.release();
+        }
+    } catch (error) {
+        console.error('Error submitting form:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// Start the server
+app.listen(port, () => {
+    console.log(Server is running on port ${port});
 });
