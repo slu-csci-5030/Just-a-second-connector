@@ -1,0 +1,1 @@
+This file contains the images of the modified and updated EmployerRegistrationForm Page with Tooltip Popup functionality.
