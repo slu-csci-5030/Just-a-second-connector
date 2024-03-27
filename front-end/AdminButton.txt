@@ -1,0 +1,1 @@
+Updated more functionalities to admin button in home page
