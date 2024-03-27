@@ -1,23 +1,21 @@
-const express =require ('express');
-const cors=require('cors');
-const server=express();
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config(); 
+const referralRoutes = require('./routes/referralRoutes'); 
 
+const app = express();
+const PORT = process.env.PORT || 8080;
 
-server.use(cors());
-server.post('/demo', async (req, res) => {
-    try {
-        const formData = req.body;
-        const referral = new Referral(formData);
-        await referral.save();
-        console.log('Form data saved to MongoDB:', formData);
-        res.status(200).json({ message: 'Form data saved successfully' });
-    } catch (error) {
-        console.error('Error saving form data to MongoDB:', error);
-        res.status(500).json({ error: 'An error occurred while saving form data' });
-    }
+app.use(cors());
+app.use(express.json());
+
+app.use('/api', referralRoutes);
+
+app.use((error, req, res, next) => {
+    console.error(error.stack);
+    res.status(500).send({ error: 'An error occurred!' });
 });
 
-
-server .listen(8080,()=> {
-    console.log("Server Started")
-} )
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
+});
