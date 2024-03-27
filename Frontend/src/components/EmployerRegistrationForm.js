@@ -12,6 +12,7 @@ const EmployerRegistrationForm = () => {
         specificPositions: '',
         payRate: '',
         eligibleBenefits: '',
+        safety_commitment: '',
         shifts: [],
         hiringType: '',
         jobDescriptionFile: null,
@@ -29,6 +30,7 @@ const EmployerRegistrationForm = () => {
         specificPositions: '',
         payRate: '',
         eligibleBenefits: '',
+        safety_commitment: '',
         hiringType: '',
         jobDescriptionFile: '',
         offensesQuestion: '',
@@ -104,6 +106,7 @@ const EmployerRegistrationForm = () => {
             specificPositions: '',
             payRate: '',
             eligibleBenefits: '',
+            safety_commitment: '',
             shifts: [],
             hiringType: '',
             jobDescriptionFile: null,
@@ -120,6 +123,7 @@ const EmployerRegistrationForm = () => {
             specificPositions: '',
             payRate: '',
             eligibleBenefits: '',
+            safety_commitment: '',
             hiringType: '',
             jobDescriptionFile: '',
             offensesQuestion: '',
@@ -172,6 +176,32 @@ const EmployerRegistrationForm = () => {
                         <label htmlFor="eligibleBenefits">Are these positions eligible for benefits? If so, which ones?</label>
                         <textarea id="eligibleBenefits" name="eligibleBenefits" placeholder="Answer here" value={formData.eligibleBenefits} onChange={handleChange}></textarea>
                         {formErrors.eligibleBenefits && <p className="error">{formErrors.eligibleBenefits}</p>}
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor="safety_commitment" className="tooltip">
+                            <input type="checkbox" id="safety_commitment" name="safety_commitment" onChange={handleChange}/>
+                            Company is committed to safe work practices.
+                            <span className="tooltiptext">
+                                <i className="fas fa-info-circle"></i>
+                                <div className="tooltip-content">
+                                <h3>Safety Commitment</h3>
+                                <p>
+                                By prioritizing safe work practices, we aim to create a safe and healthy working environment for our employees, protect our assets, and maintain the trust and confidence of our stakeholders, including customers, suppliers, and the communities in which we operate. Our commitment to safe work practices encompasses the following:
+                                </p>
+                                <ul>
+                                    <li>Compliance with Regulations</li>
+                                    <li>Risk Assessment and Mitigation</li>
+                                    <li>Incident Investigation and Prevention</li>
+                                    <li>Continuous Improvement</li>
+                                    <li>Safety Training and Education</li>
+                                    <li>Contractor Management</li>
+                                </ul>  
+                                </div>
+                            </span>
+                        </label>
+                        {formErrors.safety_commitment && (
+                            <p className="error">{formErrors.safety_commitment}</p>
+                        )}
                     </div>
                     <div className="form-group">
                         <label>What shifts does your company have available?</label>
