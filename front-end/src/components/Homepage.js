@@ -17,10 +17,12 @@ function Homepage() {
   useEffect(() => {
     const footer = document.querySelector('.footer');
     const onScroll = () => {
-      if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-        footer.classList.add('footer-visible');
-      } else {
-        footer.classList.remove('footer-visible');
+      if (footer) { // Check if footer is not null
+        if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+          footer.classList.add('footer-visible');
+        } else {
+          footer.classList.remove('footer-visible');
+        }
       }
     };
 
@@ -47,9 +49,11 @@ function Homepage() {
             </div>
             <div className="button">
               <Link to="/employer-registration-form">Employer Registration Form</Link>
+
             </div>
             <div className="button">
               <Link to="/admin-login">Admin</Link>
+
             </div>
           </div>
         </nav>
@@ -70,9 +74,10 @@ function Homepage() {
           )} />
           <Route path="/referral-form" component={ReferralForm} />
           <Route path="/employer-registration-form" component={EmployerRegistrationForm} />
+
           <Route path="/admin-login" component={AdminLogin} /> 
           <Route path="/admin-dashboard" exact component={AdminDashBoard} /> 
-        </Switch>
+
 
         <footer className="footer">
         
@@ -105,8 +110,9 @@ function Homepage() {
             </div>
           </div>
         </footer>
-        
+        </Switch>
       </div>
+      
     </Router>
   );
 }
