@@ -41,6 +41,7 @@
 /* Input styles */
 input[type='text'],
 input[type='date'],
+input[type='url'],
 input[type='tel'],
 input[type='email'],
 textarea {

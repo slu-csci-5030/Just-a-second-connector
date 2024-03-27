@@ -6,6 +6,7 @@ const EmployerRegistrationForm = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        linkedin_url: '',
         companyName: '',
         companyLocation: '',
         hiringManagerQuestion: '',
@@ -23,6 +24,7 @@ const EmployerRegistrationForm = () => {
     const [formErrors, setFormErrors] = useState({
         name: '',
         email: '',
+        linkedin_url: '',
         companyName: '',
         companyLocation: '',
         hiringManagerQuestion: '',
@@ -98,6 +100,7 @@ const EmployerRegistrationForm = () => {
         setFormData({
             name: '',
             email: '',
+            linkedin_url: '',
             companyName: '',
             companyLocation: '',
             hiringManagerQuestion: '',
@@ -114,6 +117,7 @@ const EmployerRegistrationForm = () => {
         setFormErrors({
             name: '',
             email: '',
+            linkedin_url: '',
             companyName: '',
             companyLocation: '',
             hiringManagerQuestion: '',
@@ -142,6 +146,11 @@ const EmployerRegistrationForm = () => {
                         <label htmlFor="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
                         {formErrors.email && <p className="error">{formErrors.email}</p>}
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="linkedin_url">LinkedIn Profile URL </label>
+                        <input type="url" id="linkedin_url" name="linkedin_url" placeholder="LinkedIn Profile URL" value={formData.linkedin_url} onChange={handleChange} />
+                        {formErrors.linkedin_url && <p className="error">{formErrors.linkedin_url}</p>}
                     </div>
                     <div className="form-group">
                         <label htmlFor="companyName">Company Name</label>

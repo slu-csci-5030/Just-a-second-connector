@@ -1,0 +1,1 @@
+Appended the LinkedIn Profile url field to the employer registration form.
