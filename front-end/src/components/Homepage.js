@@ -72,10 +72,16 @@ function Homepage() {
           <Route path="/employer-registration-form" component={EmployerRegistrationForm} />
           <Route path="/admin-login" component={AdminLogin} /> 
           <Route path="/admin-dashboard" exact component={AdminDashBoard} /> 
+          <Route path="/more-info" render={() => (
+            <div className="more-info-container">
+              <p>
+                Hello there! Welcome to Just a Second Connector, a transformative project initiated by Transformative Workforce Academy (TWA). This platform addresses the unique needs of individuals associated with the Criminal Justice system seeking employment opportunities, connecting them with employers willing to provide a second chance. TWA currently relies on Google Docs to track both job seekers and employers, necessitating a more efficient system for matching the specific requirements of both groups. Just a Second Connector streamlines this process by providing a centralized platform for job seeker connections and employer matching. Our goal is to replace the existing Google Docs system, offering a comprehensive solution that facilitates the seamless tracking of progress for both job seekers and employers. Join us in this endeavor to make a positive impact and provide meaningful opportunities for those seeking a fresh start in the workforce.
+              </p>
+            </div>
+          )} />
         </Switch>
 
         <footer className="footer">
-        
           <div className="footer-content">
             <div className="follow-us">
               <h3>Follow Us</h3>
@@ -91,21 +97,18 @@ function Homepage() {
                 </a>
               </div>
             </div>
-            
-
             <div className="contact-us">
               <h3>Contact Us</h3>
               <p>Email: example@example.com</p>
               <p>Phone: +123 456 7890</p>
             </div>
             <div className="additional-content">
-              <h3>More Info</h3>
+              <h3><Link className="additional" to="/more-info">More Info</Link></h3>
               <p>Privacy Policy</p>
               <p>Terms of Service</p>
             </div>
           </div>
         </footer>
-        
       </div>
     </Router>
   );
