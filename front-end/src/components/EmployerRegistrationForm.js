@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import '../styles/EmployerRegistrationForm.css';
 
 const EmployerRegistrationForm = () => {
@@ -72,7 +73,7 @@ const EmployerRegistrationForm = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         // Validate form fields
@@ -89,44 +90,57 @@ const EmployerRegistrationForm = () => {
             return;
         }
 
-        // Perform form submission logic here
-        // For example, you can send formData to your backend server
+        try {
+            // Use FormData to send files along with other form data
+            const formDataToSend = new FormData();
+            for (const key in formData) {
+                formDataToSend.append(key, formData[key]);
+            }
 
-        setSubmit(true);
+            // Send form data to the backend
+            await axios.post('/api/employer-registration', formDataToSend);
 
-        // Clear the form data and errors after submission
-        setFormData({
-            name: '',
-            email: '',
-            companyName: '',
-            companyLocation: '',
-            hiringManagerQuestion: '',
-            specificPositions: '',
-            payRate: '',
-            eligibleBenefits: '',
-            shifts: [],
-            hiringType: '',
-            jobDescriptionFile: null,
-            offensesQuestion: '',
-            videoFile: null,
-            additionalInformation: '',
-        });
-        setFormErrors({
-            name: '',
-            email: '',
-            companyName: '',
-            companyLocation: '',
-            hiringManagerQuestion: '',
-            specificPositions: '',
-            payRate: '',
-            eligibleBenefits: '',
-            hiringType: '',
-            jobDescriptionFile: '',
-            offensesQuestion: '',
-            videoFile: '',
-            additionalInformation: '',
-        });
+            // If successful, set submit flag to true
+            setSubmit(true);
+
+            // Clear the form data and errors after submission
+            setFormData({
+                name: '',
+                email: '',
+                companyName: '',
+                companyLocation: '',
+                hiringManagerQuestion: '',
+                specificPositions: '',
+                payRate: '',
+                eligibleBenefits: '',
+                shifts: [],
+                hiringType: '',
+                jobDescriptionFile: null,
+                offensesQuestion: '',
+                videoFile: null,
+                additionalInformation: '',
+            });
+            setFormErrors({
+                name: '',
+                email: '',
+                companyName: '',
+                companyLocation: '',
+                hiringManagerQuestion: '',
+                specificPositions: '',
+                payRate: '',
+                eligibleBenefits: '',
+                hiringType: '',
+                jobDescriptionFile: '',
+                offensesQuestion: '',
+                videoFile: '',
+                additionalInformation: '',
+            });
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
     };
+
+    
 
     return (
         <div>
