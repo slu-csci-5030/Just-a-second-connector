@@ -14,7 +14,7 @@ const pool = new Pool({
   host: "localhost",
   database: "server",
   password: "Sowmya@1234",
-  port: 5432,y
+  port: 5432,
 });
 
 pool.connect((err) => {
