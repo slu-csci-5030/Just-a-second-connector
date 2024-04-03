@@ -176,8 +176,12 @@ function ReferralForm() {
                     </div>
                     {formErrors.iam && <p className="error">{formErrors.iam}</p>}
                 </div>
+                <div className='referal-txt'>
                 <h2>Referrer Information</h2>
+                </div>
+                <div>
                 <label>Thanks for taking the time to give us information about the jobseeker you are referring!</label>
+                </div>
                 <div className="form-group">
                     <label htmlFor="referrername">Referrer Name</label>
                     <input type="text" id="referrername" name="referrername" placeholder="Name" onChange={handleChange}/>
