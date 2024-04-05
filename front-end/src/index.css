@@ -1,0 +1,18 @@
+body, html {
+  font-family: 'Open Sans', sans-serif;
+  color: #003DA5; /* SLU Blue */
+  background-color: #FFF; /* White background */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.footer{
+  position:fixed;
+  left: 0;
+  bottom:0;
+  width:100%;
+  
+}
