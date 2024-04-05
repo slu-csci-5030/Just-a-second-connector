@@ -1,0 +1,3 @@
+This file contains the image of the functionalities for the button "Match Jobseekers with Employers in the navbar" to the right:
+1. Append the heading as "Current Matches"
+2. Open a new container (which will contain the list of confirmed matches)
