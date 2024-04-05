@@ -33,6 +33,7 @@
 .logo {
   font-weight: bold;
   margin-left: 10px;
+  color: #fff;
 }
 
 .options {
@@ -84,7 +85,9 @@
   margin: 10px; 
 }
 
-
+.footer-content h3{
+  color: white;
+}
 
 .social-links a {
   color: white; 

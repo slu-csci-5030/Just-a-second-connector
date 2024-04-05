@@ -1,62 +1,78 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import '../styles/EmployerRegistrationForm.css';
 
-const initialFormData = {
-    // Define your initial form data fields here
-    name: '',
-    email: '',
-    companyName: '',
-    companyLocation: '',
-    hiringManagerQuestion: '',
-    specificPositions: '',
-    payRate: '',
-    eligibleBenefits: '',
-    shifts: [],
-    hiringType: '',
-    jobDescriptionFile: null,
-    offensesQuestion: '',
-    videoFile: null,
-    additionalInformation: '',
-
-};
-
-function EmployerRegistrationForm() {
+const EmployerRegistrationForm = () => {
     const [isSubmit, setSubmit] = useState(false);
-    const [formData, setFormData] = useState(initialFormData);
-    const [formErrors, setFormErrors] = useState({});
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        companyName: '',
+        companyLocation: '',
+        hiringManagerQuestion: '',
+        specificPositions: '',
+        payRate: '',
+        eligibleBenefits: '',
+        shifts: [],
+        hiringType: '',
+        jobDescriptionFile: null,
+        offensesQuestion: '',
+        videoFile: null,
+        additionalInformation: '',
+    });
+
+    const [formErrors, setFormErrors] = useState({
+        name: '',
+        email: '',
+        companyName: '',
+        companyLocation: '',
+        hiringManagerQuestion: '',
+        specificPositions: '',
+        payRate: '',
+        eligibleBenefits: '',
+        hiringType: '',
+        jobDescriptionFile: '',
+        offensesQuestion: '',
+        videoFile: '',
+        additionalInformation: '',
+    });
 
     const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
-    
-        // Handle checkboxes separately
+        const { name, value, type } = e.target;
         if (type === 'checkbox') {
-            // Create a new array based on the current shifts array
-            const updatedShifts = formData.shifts.includes(value)
-                ? formData.shifts.filter(shift => shift !== value)
-                : [...formData.shifts, value];
-    
+            const isChecked = e.target.checked;
+            const shift = e.target.value;
+
+            if (isChecked) {
+                setFormData({
+                    ...formData,
+                    shifts: [...formData.shifts, shift],
+                });
+            } else {
+                setFormData({
+                    ...formData,
+                    shifts: formData.shifts.filter((item) => item !== shift),
+                });
+            }
+        } else if (type === 'file') {
             setFormData({
                 ...formData,
-                shifts: updatedShifts,
+                [name]: e.target.files[0],
             });
         } else {
-            // For other inputs, update the state as usual
             setFormData({
                 ...formData,
                 [name]: value,
             });
         }
-    
-        // Clear the corresponding error message
+
+        // Clear previous error message when user starts typing
         setFormErrors({
             ...formErrors,
             [name]: '',
         });
     };
-    
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
         // Validate form fields
@@ -73,18 +89,43 @@ function EmployerRegistrationForm() {
             return;
         }
 
-        try {
-            // Send form data to the server
-            const response = await axios.post('http://localhost:3001/employer_forms', formData);
-            console.log(response.data);
-            setSubmit(true);
+        // Perform form submission logic here
+        // For example, you can send formData to your backend server
 
-            // Clear the form data after submission
-            setFormData(initialFormData);
-            setFormErrors({});
-        } catch (error) {
-            console.error('Error submitting form:', error);
-        }
+        setSubmit(true);
+
+        // Clear the form data and errors after submission
+        setFormData({
+            name: '',
+            email: '',
+            companyName: '',
+            companyLocation: '',
+            hiringManagerQuestion: '',
+            specificPositions: '',
+            payRate: '',
+            eligibleBenefits: '',
+            shifts: [],
+            hiringType: '',
+            jobDescriptionFile: null,
+            offensesQuestion: '',
+            videoFile: null,
+            additionalInformation: '',
+        });
+        setFormErrors({
+            name: '',
+            email: '',
+            companyName: '',
+            companyLocation: '',
+            hiringManagerQuestion: '',
+            specificPositions: '',
+            payRate: '',
+            eligibleBenefits: '',
+            hiringType: '',
+            jobDescriptionFile: '',
+            offensesQuestion: '',
+            videoFile: '',
+            additionalInformation: '',
+        });
     };
 
     return (
@@ -92,7 +133,7 @@ function EmployerRegistrationForm() {
             <div className={`form-container ${isSubmit ? 'blur' : ''}`}>
                 <h1>Employer Registration Form</h1>
                 <form onSubmit={handleSubmit}>
-                <div className="form-group">
+                    <div className="form-group">
                         <label htmlFor="name">Name</label>
                         <input type="text" id="name" name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
                         {formErrors.name && <p className="error">{formErrors.name}</p>}
@@ -185,7 +226,6 @@ function EmployerRegistrationForm() {
                     <div>
                         <button type="submit">Submit</button>
                     </div>
-
                 </form>
             </div>
             {isSubmit && (
@@ -195,6 +235,6 @@ function EmployerRegistrationForm() {
             )}
         </div>
     );
-}
+};
 
 export default EmployerRegistrationForm;

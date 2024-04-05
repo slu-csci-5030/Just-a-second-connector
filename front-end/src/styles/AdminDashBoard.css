@@ -1,11 +1,189 @@
 /* AdminDashboard.css */
 
-.admin-dashboard-container {
-    padding: 20px;
+/* Global styles */
+body {
+    font-family: Arial, sans-serif; /* Default font */
+    margin: 0;
+    padding: 0;
 }
 
+/* Admin dashboard container */
+.admin-dashboard-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Adjust for smaller screens */
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    flex-wrap: wrap; /* Allow navbar items to wrap */
+    width: 100%;
+}
+
+.navbar-left, .navbar-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-left {
+    width: 100%; /* Full width on smaller screens */
+    background-color: #002D72; /* Theme color */
+}
+
+.navbar-right {
+    width: 100%; /* Adjust for smaller screens */
+    flex-direction: column; /* Stack content on smaller screens */
+    justify-content: center; /* Center content for smaller screens */
+}
+
+/* Content sections */
+.content, .content-long {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #004BA0; /* A lighter shade for visibility */
+    color: white; /* Adjusted for visibility against the theme */
+}
+
+.scrollable {
+    overflow-y: auto;
+    height: auto; /* Make height responsive */
+    max-height: 200px; /* Adjustable based on content */
+}
+
+.content-long {
+    padding: 15px; /* Enhanced padding */
+}
+
+/* Headings */
 .dashboard-heading {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: black;
+    margin: 20px;
+    color: #002D72; /* Matching theme */
+}
+
+/* Scroll section */
+.scroll-section {
+    width: 100%; /* Adjust for smaller screens */
+}
+
+/* Button and interactive elements */
+.scrollable button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    color: white;
+    border-radius: 50%;
+}
+
+.scrollable button.accept-button {
+    background-color: #28a745; /* Green for accept */
+    width: auto;
+    margin-right: 10px;
+    border-radius: 0;
+}
+
+.scrollable button.reject-button {
+    background-color: #dc3545; /* Red for reject */
+    width: auto;
+    border-radius: 0;
+}
+
+.scrollable button:hover {
+    filter: brightness(110%); /* Lighten on hover */
+}
+
+.scrollable ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Adjust as necessary */
+    color: #333; /* Default text color for readability */
+}
+
+/* Confirm Matches Button Container */
+.confirm-matches-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 0 15px;
+}
+
+/* Confirm Matches Button */
+.confirm-matches-button {
+    width: 180px;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #002D72;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.2s;
+    text-align: center;
+}
+
+h3{
+    color: #002D72;
+}
+
+.confirm-matches-button:hover, .confirm-matches-button:focus {
+    background-color: #004BA0; /* A lighter shade for interactive effect */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.confirm-matches-button:active {
+    background-color: #001B4A; /* A darker shade for pressed effect */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Mimic pressing down */
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .navbar {
+        flex-direction: row;
+    }
+
+    .navbar-left, .navbar-right {
+        flex-direction: column;
+    }
+
+    .navbar-left {
+        width: 30%; /* Revert to sidebar layout on tablets and larger */
+    }
+
+    .navbar-right {
+        width: 70%;
+        flex-direction: row; /* Keep original layout on larger screens */
+        justify-content: space-around;
+    }
+
+    .scroll-section {
+        width: 50%; /* Half of the parent container on larger screens */
+    }
+}
+
+/* Further adjustments for larger desktops */
+@media (min-width: 1024px) {
+    .scrollable {
+        height: 200px; /* Fixed height for desktops */
+    }
+}
+
+/* Additional responsive styling */
+@media (max-width: 767px) {
+    /* Adjust font sizes and button sizes for smaller screens */
+    .confirm-matches-button {
+        width: auto; /* Allow button to adjust based on content */
+        padding: 8px 20px;
+        font-size: 16px; /* Slightly smaller text */
+    }
+
+    h3, .dashboard-heading {
+        font-size: 18px; /* Adjust heading sizes for better readability */
+    }
 }

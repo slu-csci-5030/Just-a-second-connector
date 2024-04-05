@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import '../styles/QuestionnaireForm.css';
 
 const QuestionnaireForm = () => {
     const [isSubmit, setSubmit] = useState(false);
@@ -17,27 +19,27 @@ const QuestionnaireForm = () => {
         gender: '',
         veteranStatus: '',
         highestEducationLevel: '',
-        additionalQuestion: '',
+        completionStatus: '',
         transportation: '',
-        maxCommuteTime: '',
+        commuteTime: '',
         employmentType: '',
         idealSchedule: '',
-        commitmentsOutsideOfWork: '',
+        outsideCommitments: '',
         interestedIndustries: [],
         avoidIndustries: [],
         valuableSkills: '',
         employmentBarriers: [],
         workplaceTriggers: '',
-        pastEmploymentTroubles: '',
+        employmentHistory: '',
         jobReadinessProgram: '',
         socialMediaPresence: '',
-        voicemailSetup: '',
-        resume: '',
-        onlineApplicationConfidence: '',
-        emailConfidence: '',
-        backgroundDiscussionConfidence: '',
-        skillsetDiscussionConfidence: '',
-        interviewAndWorkConfidence: '',
+        voiceMailHelp: '',
+        resumeProud: '',
+        onlineApplicationsConfidence: '',
+        emailsConfidence: '',
+        backgroundDiscussConfidence: '',
+        skillsetDiscussConfidence: '',
+        interviewsWorkConfidence: '',
         timeManagementConfidence: '',
         justiceInvolvedSkills: '',
         covidVaccination: '',
@@ -58,77 +60,15 @@ const QuestionnaireForm = () => {
         // Add more form errors here...
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const errors = {};
-        Object.keys(formData).forEach((key) => {
-            if (!formData[key]) {
-                errors[key] = 'This field is required';
-            }
-        });
-
-        if (Object.keys(errors).length > 0) {
-            setFormErrors(errors);
-            return;
+        try {
+            const response = await axios.post('http://localhost:8081/questionnareform', formData);
+            console.log(response.data);
+            setSubmit(true);
+        } catch (error) {
+            console.error('Error submitting questionnaire form:', error);
         }
-
-        // Handle form submission logic here
-        setSubmit(true);
-        // Clear form data and errors after submission
-        setFormData({
-            firstName: '',
-            lastName: '',
-            birthDate: '',
-            phoneNumber: '',
-            alternatePhoneNumber: '',
-            email: '',
-            streetAddress: '',
-            city: '',
-            state: '',
-            zipCode: '',
-            race: '',
-            gender: '',
-            veteranStatus: '',
-            highestEducationLevel: '',
-            additionalQuestion: '',
-            transportation: '',
-            maxCommuteTime: '',
-            employmentType: '',
-            idealSchedule: '',
-            commitmentsOutsideOfWork: '',
-            interestedIndustries: [],
-            avoidIndustries: [],
-            valuableSkills: '',
-            employmentBarriers: [],
-            workplaceTriggers: '',
-            pastEmploymentTroubles: '',
-            jobReadinessProgram: '',
-            socialMediaPresence: '',
-            voicemailSetup: '',
-            resume: '',
-            onlineApplicationConfidence: '',
-            emailConfidence: '',
-            backgroundDiscussionConfidence: '',
-            skillsetDiscussionConfidence: '',
-            interviewAndWorkConfidence: '',
-            timeManagementConfidence: '',
-            justiceInvolvedSkills: '',
-            covidVaccination: '',
-            employmentSupports: '',
-        });
-        setFormErrors({
-            firstName: '',
-            lastName: '',
-            birthDate: '',
-            phoneNumber: '',
-            email: '',
-            streetAddress: '',
-            city: '',
-            state: '',
-            zipCode: '',
-            gender: '',
-            // Reset other form errors here...
-        });
     };
 
     const handleChange = (e) => {
