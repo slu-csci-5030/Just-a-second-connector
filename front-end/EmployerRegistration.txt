@@ -1,1 +1,1 @@
-Validated EmployerRegistration form for empty fields.
+Connected the Employer Registration form with the database using Firebase.
