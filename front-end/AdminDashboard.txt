@@ -1,0 +1,1 @@
+On clicking Match Jobseekers with Job coaches in the navbar to the right of it a list of Job coaches appears with a plus button next to each of the names.
