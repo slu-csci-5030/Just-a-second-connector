@@ -10,6 +10,8 @@ Home button: This appears to be the main landing page that provides an overview 
 Referral Form: This is likely a form for referring or registering job seekers who are part of the target audience for the application's services.
 Employer Registration Form: This form is likely used for employers to register and indicate their willingness to consider hiring individuals with criminal justice backgrounds.
 Admin login button: This component or page is reserved for administrative tasks related to managing the application, users, and data.
+
+
 **Referral Form:**
 This form is used for referring or registering job seekers who are part of the target audience for the application's services.
 •	It collects the information about jobseeker like name, email, phone number
@@ -20,6 +22,8 @@ This form is used for referring or registering job seekers who are part of the t
 •	It allows the job seeker to self-report potential charges that may come up during a background check.
 •	It provides an optional field for additional information before pairing the job seeker with a job coach.
 It is the comprehensive tool for gathering relevant details about both the referrer and the job seeker, including their background, barriers, and specific needs. This information will be used to match the job seeker with appropriate employment opportunities and support services.
+
+
 **Employer Registration Form:**
 •	Collects basic company information (name, email, location)
 •	Identifies hiring decision-makers and their contact details
@@ -35,6 +39,8 @@ Additional Information for Job Seekers:
 •	Employers can share details about the hiring process
 •	Ability to highlight work environment, perks, and other relevant information
 It facilitate a comprehensive employer onboarding process for a job matching or recruitment platform, capturing company details, job openings, requirements, screening criteria, and additional context to effectively match and introduce relevant candidates to employers.
+
+
 **Admin Login**
 This "Admin Login" button provides access to the administrative area of the application, which is reserved for authorized personnel only. The admin area allows you to perform advanced management tasks such as:
 •	User administration (creating, modifying, and deleting user accounts)
@@ -50,5 +56,4 @@ We also need to implement the section that says we have to pair companies with j
 Run the backend code that controls user authentication, matching algorithms, and data storage. With regard to our project, we must devise a strategy for aligning the applicant's résumé with the employer's limitations on their criminal histories, among other aspects, such as educational background. 
 To ensure that everything is operating as it should and that the result is what was expected, we also need to manually test the code. 
 Furthermore, I believe that thorough system documentation is crucial, including technical documentation for developers and administrators as well as user guides. 
-
 
