@@ -1,0 +1,1 @@
+Documented the tech stack used and explored for the project.
