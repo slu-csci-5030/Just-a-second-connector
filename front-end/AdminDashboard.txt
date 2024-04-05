@@ -1,1 +1,1 @@
-Added to the right of list of Job coaches, the list of Jobseekers should appear with a plus button next to each of the names.
+Added to the right of list of Job coaches, the list of Jobseekers with a plus button next to each of the names.
