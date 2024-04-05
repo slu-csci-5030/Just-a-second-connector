@@ -1,1 +1,0 @@
-Added animation as the EmployerRegistration form submit functionality.
