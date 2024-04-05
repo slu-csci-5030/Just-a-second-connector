@@ -1,1 +1,0 @@
-Added validation for email in Employer Registration form.
