@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import '../styles/EmployerRegistrationForm.css';
+import axios from 'axios'; // Import Axios
+import '../styles/EmployerRegistrationForm.css'; 
 
 const EmployerRegistrationForm = () => {
     const [isSubmit, setSubmit] = useState(false);
@@ -72,29 +73,37 @@ const EmployerRegistrationForm = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // Validate form fields
-        const errors = {};
-        Object.keys(formData).forEach((key) => {
-            if (!formData[key]) {
-                errors[key] = 'This field is required';
+        const formDataWithFiles = new FormData();
+        Object.entries(formData).forEach(([key, value]) => {
+            if (value instanceof File) {
+                formDataWithFiles.append(key, value, value.name);
+            } else {
+                formDataWithFiles.append(key, value);
             }
         });
-
-        // If there are errors, display warnings and prevent form submission
-        if (Object.keys(errors).length > 0) {
-            setFormErrors(errors);
-            return;
+    
+        try {
+            const response = await axios.post("http://localhost:8082/employer_forms", formDataWithFiles, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            if (response.status === 201) {
+                console.log('Form submitted successfully');
+                resetFormData();
+            } else {
+                console.error('Error submitting form:', response.data);
+            }
+        } catch (error) {
+            console.error('Error:', error);
         }
-
-        // Perform form submission logic here
-        // For example, you can send formData to your backend server
-
-        setSubmit(true);
-
-        // Clear the form data and errors after submission
+    };
+    
+    
+    // Function to reset form data and errors
+    const resetFormData = () => {
         setFormData({
             name: '',
             email: '',
@@ -127,6 +136,7 @@ const EmployerRegistrationForm = () => {
             additionalInformation: '',
         });
     };
+    
 
     return (
         <div>
@@ -227,6 +237,7 @@ const EmployerRegistrationForm = () => {
                         <button type="submit">Submit</button>
                     </div>
                 </form>
+
             </div>
             {isSubmit && (
                 <div className="submitted-animation">
