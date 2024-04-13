@@ -17,12 +17,10 @@ function Homepage() {
   useEffect(() => {
     const footer = document.querySelector('.footer');
     const onScroll = () => {
-      if (footer) { // Check if footer is not null
-        if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-          footer.classList.add('footer-visible');
-        } else {
-          footer.classList.remove('footer-visible');
-        }
+      if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+        footer.classList.add('footer-visible');
+      } else {
+        footer.classList.remove('footer-visible');
       }
     };
 
@@ -42,18 +40,16 @@ function Homepage() {
           </div>
           <div className="options">
             <div className="button">
-              <Link to="/">Home</Link>
+              <Link className="link" to="/">Home</Link>
             </div>
             <div className="button">
-              <Link to="/referral-form">Referral Form</Link>
+              <Link className="link" to="/referral-form">Referral Form</Link>
             </div>
             <div className="button">
-              <Link to="/employer-registration-form">Employer Registration Form</Link>
-
+              <Link className="link" to="/employer-registration-form">Employer Registration Form</Link>
             </div>
             <div className="button">
-              <Link to="/admin-login">Admin</Link>
-
+              <Link className="link" to="/admin-login">Admin</Link>
             </div>
           </div>
         </nav>
@@ -63,21 +59,23 @@ function Homepage() {
             <>
               {displayBriefing && (
                 <div className="briefing-container">
+                  <center>
                   <p>
                     <b>Just a Second Connector</b><br />
                     -Transformative Workforce Academy<br />
                     Work Briefing: TWA connects people who are involved with the Criminal Justice system in some way who need to find a job connect with employment opportunities at employers who are willing to give them a second chance. They currently track both sets of participants in their programs, the jobseekers and the employers, through a set of Google Docs. They need a system to help match the restrictions both groups require.
                   </p>
+                  </center>
                 </div>
               )}
             </>
           )} />
           <Route path="/referral-form" component={ReferralForm} />
           <Route path="/employer-registration-form" component={EmployerRegistrationForm} />
-
           <Route path="/admin-login" component={AdminLogin} /> 
           <Route path="/admin-dashboard" exact component={AdminDashBoard} /> 
-
+          <Route path="/questionnaire-form"  component={QuestionnaireForm} />
+        </Switch>
 
         <footer className="footer">
         
@@ -110,9 +108,8 @@ function Homepage() {
             </div>
           </div>
         </footer>
-        </Switch>
+        
       </div>
-      
     </Router>
   );
 }

@@ -3,6 +3,10 @@
   padding: 0;
   box-sizing: border-box; 
   font-family: 'Arial', sans-serif; 
+  
+}
+.container{
+  overflow-y:hidden;
 }
 
 .title, h3, h1, h2, h4, h5, h6 {
@@ -11,14 +15,21 @@
   font-size: 2rem; 
 }
 
+.container{
+  position: relative;
+  display: block;
+}
 .nav-bar {
   background-color: #003DA5; 
-  height: 80px;
+  height: 60px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px; 
+  position: sticky;
+  top:0px;
+  z-index: 1000;
 }
 
 .nav-link {
@@ -26,13 +37,13 @@
 }
 
 .brand, .options a {
-  color: #fff;
   text-decoration: none; 
 }
 
 .logo {
   font-weight: bold;
   margin-left: 10px;
+  color: #fff;
 }
 
 .options {
@@ -59,18 +70,27 @@
 
 .button:hover {
  
-  color: #FFF;
-  border-bottom: 3px solid #FFF;
+  color: #003DA5;
+  /*border-bottom: 3px solid #FFF;*/
+  background-color: white;
 }
+
+.button .link{
+  color:white;
+}
+.button:hover > .link{
+  color:#003DA5;
+  }
 .footer {
   background-color: #003DA5;
   color: white;
-  padding: px 10px;
-  height: min-content;
+  
+  height: auto;
   text-align: center;
-  display: auto; 
+   
   position: relative;/* Temporarily set to block to ensure visibility */
-  top: 120px;
+
+  padding: 26.5px 0px;
 }
 
 .footer-content {
@@ -84,7 +104,9 @@
   margin: 10px; 
 }
 
-
+.footer-content h3{
+  color: white;
+}
 
 .social-links a {
   color: white; 
@@ -108,10 +130,13 @@
   background-color: white;
   padding: 50px 15px 15px 15px;
   border-radius: 15px;
-  width: 30%; 
+  height:100%;
+  width: 80%; 
   margin: 50px auto; /* Keeps the container centered horizontally and adds space from the top */
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth without 3D effect */
   transition: background-color 0.3s, color 0.3s;
+  position: relative;
+  top:20px;
 }
 
 .briefing-container:hover {

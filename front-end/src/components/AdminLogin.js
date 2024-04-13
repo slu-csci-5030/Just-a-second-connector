@@ -24,7 +24,7 @@ const AdminLogin = () => {
         
         // Hardcoded username and password
         const correctUsername = 'admin';
-        const correctPassword = 'adminpassword';
+        const correctPassword = '1';
 
         // Check if entered username and password match the hardcoded values
         if (formData.username === correctUsername && formData.password === correctPassword) {

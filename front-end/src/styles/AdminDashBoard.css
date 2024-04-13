@@ -1,11 +1,141 @@
-/* AdminDashboard.css */
-
-.admin-dashboard-container {
-    padding: 20px;
+.admin-dashboard-container{
+    height: 100%;
+    width: 100%;
+}
+.navbar{
+    display: flex;
+}
+.navbar-left{
+    background-color: #003DA5;
+    height: 100vh;
+    width: 250px;
+    display: block;
 }
 
-.dashboard-heading {
-    font-size: 24px;
-    margin-bottom: 20px;
+.navbar-left .content{
+    color: white;
+    font-size: small;
+    font-weight: 600;
+    position: relative;
+    top: 10px;
+    padding: 40px;
+    cursor: pointer;
+
+}
+
+.content:hover{
+    background-color: white;
     color: black;
 }
+
+.dashboard-heading{
+    width: 60%;
+    margin-left: 90px;;
+    
+}
+
+.navbar-right{
+    width: 100%;
+
+}
+
+.matching-area{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-evenly;
+}
+.content-long{
+    width: 400px;
+    height: 300px;
+    overflow: auto;
+    background-color: rgb(230, 228, 228);
+    border-radius: 20px;
+}
+
+.matching-heading{
+    color: 'black';
+    background-color: antiquewhite;
+}
+.content-long button{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.content-long ul li{
+    display: flex;
+}
+
+.match-data{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.job-coach-name{
+    width: 70%;
+}
+
+.add-btn{
+    background-color: #003DA5;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.scroll-section h3{
+    color: black;
+    position: relative;
+    left: 100px;
+    width: 50%;
+    white-space: nowrap;
+    overflow: hidden; /* Ensures text doesn't spill outside its container */
+    text-overflow: ellipsis; /* Adds an ellipsis if the text is too long to fit */
+    font-size: 25px; /* Adjust font-size as needed */
+    font-weight: bold;
+    /* Add any additional styling as required */
+}
+.matched-pair-box{
+    background-color: white;
+    height: 250px;
+    width: 90%;
+    margin-left: 10px;
+    overflow: auto;
+    border-radius: 10px;
+}
+
+.paired-data{
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.scrollable button.accept-button {
+    background-color: #28a745; /* Green for accept */
+    width: auto;
+    margin-right: 10px;
+    border-radius: 0;
+}
+
+.scrollable button.reject-button {
+    background-color: #dc3545; /* Red for reject */
+    width: auto;
+    border-radius: 0;
+}
+  
+  .accept-button:hover {
+    background-color: #218838; /* Darker Green */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+  }
+  
+  .reject-button:hover {
+    background-color: #c82333; /* Darker Red */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+  }
+  

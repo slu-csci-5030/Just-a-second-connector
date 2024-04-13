@@ -3,10 +3,10 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - snandakumar2912
+      - backendConnectionSowmya
   pull_request:
     branches:
-      - snandakumar2912
+      - backendConnectionSowmya
 
 jobs:
   lint:
