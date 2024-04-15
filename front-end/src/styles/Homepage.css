@@ -9,11 +9,15 @@
   overflow-y:hidden;
 }
 
-.title, h3, h1, h2, h4, h5, h6 {
+.title, h3 {
   color: white;
   margin: 20px 0;
   font-size: 2rem; 
 }
+.h1, h2, h4, h5 {
+  color: black;
+}
+  
 
 .container{
   position: relative;
@@ -35,6 +39,12 @@
 .nav-link {
   transition: background-color 0.3s, border-bottom 0.3s; 
 }
+
+.instructions {
+  text-align: left;
+}
+
+
 
 .brand, .options a {
   text-decoration: none; 
