@@ -45,8 +45,7 @@
     height: 100%;
     justify-content: space-evenly;
 }
-.content-long{
-    width: 400px;
+.content-long {
     height: 300px;
     overflow: auto;
     background-color: rgb(230, 228, 228);
@@ -121,6 +120,7 @@
     width: auto;
     margin-right: 10px;
     border-radius: 0;
+    margin-left: auto;
 }
 
 .scrollable button.reject-button {
