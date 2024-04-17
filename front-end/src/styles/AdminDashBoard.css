@@ -45,12 +45,14 @@
     height: 100%;
     justify-content: space-evenly;
 }
-.content-long{
-    width: 400px;
+.content-long {
     height: 300px;
     overflow: auto;
     background-color: rgb(230, 228, 228);
     border-radius: 20px;
+    border: 1px solid #333; /* Dark grey border */
+    padding: 15px; /* Padding inside the box */
+    box-sizing: border-box; /* Include padding and border in the element's dimensions */
 }
 
 .matching-heading{
@@ -121,6 +123,7 @@
     width: auto;
     margin-right: 10px;
     border-radius: 0;
+    margin-left: auto;
 }
 
 .scrollable button.reject-button {
