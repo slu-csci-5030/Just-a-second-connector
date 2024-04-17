@@ -50,6 +50,9 @@
     overflow: auto;
     background-color: rgb(230, 228, 228);
     border-radius: 20px;
+    border: 1px solid #333; /* Dark grey border */
+    padding: 15px; /* Padding inside the box */
+    box-sizing: border-box; /* Include padding and border in the element's dimensions */
 }
 
 .matching-heading{
@@ -99,10 +102,6 @@
     text-overflow: ellipsis; /* Adds an ellipsis if the text is too long to fit */
     font-size: 25px; /* Adjust font-size as needed */
     font-weight: bold;
-    border: 1px solid #333; /* Adds a dark grey border */
-    padding: 10px; /* Adds padding inside the h3 element */
-    /* Ensure the width takes into account the padding and border */
-    box-sizing: border-box;
     /* Add any additional styling as required */
 }
 .matched-pair-box{
