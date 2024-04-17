@@ -1,6 +1,7 @@
 .admin-dashboard-container{
     height: 100%;
     width: 100%;
+    border: 2px solid #000; /* Black border, 2 pixels thick */
 }
 .navbar{
     display: flex;
@@ -108,6 +109,7 @@
     margin-left: 10px;
     overflow: auto;
     border-radius: 10px;
+    border: 1px solid #333; /* Dark grey border */
 }
 
 .paired-data{
