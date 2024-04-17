@@ -113,3 +113,23 @@ input[type='submit']:hover {
 .error{
   color: red;
 }
+/* ReferralForm.css */
+
+.button {
+  text-align: center;
+  margin-top: 20px; 
+}
+
+.button button {
+  padding: 8px 15px; 
+  font-size: 14px;
+  background-color: #003DA5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button button:hover {
+  background-color: #002D72;
+}
