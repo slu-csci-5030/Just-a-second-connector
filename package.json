@@ -5,5 +5,8 @@
     "@babel/preset-env": "^7.24.0",
     "@babel/preset-react": "^7.23.3",
     "babel-cli": "^6.26.0"
+  },
+  "dependencies": {
+    "commands": "^0.0.7"
   }
 }

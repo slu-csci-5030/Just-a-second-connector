@@ -13,7 +13,7 @@ const cors = require("cors");
 app.use(cors());
 
 // MongoDB connection configuration
-const connectionString = "mongodb+srv://sowmyamutya20:K8oT6RIgxfZQctyY@cluster0.lohfogg.mongodb.net/";
+const connectionString = "mongodb://localhost:27017/EmployerDB.Employees";
 
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
