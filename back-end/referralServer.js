@@ -1,11 +1,11 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const server = express();
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
 
-server.use(cors()); // Enable CORS for all routes
-server.use(bodyParser.json());
+let router = express.Router();
+router.use(cors()); // Enable CORS for all routes
+router.use(bodyParser.json());
 
 
 const referralSchema = new mongoose.Schema({
@@ -46,7 +46,7 @@ mongoose.connect(mongoURI, {
 .catch(err => console.error('MongoDB connection error:', err));
 
 
-server.post('/demo', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const formData = req.body;
 
@@ -75,9 +75,10 @@ server.post('/demo', async (req, res) => {
     }
 });
 
+export default router;
 
 
-
-server.listen(8080, () => {
+/* router.listen(8080, () => {
     console.log("Server Started")
 });
+ */
