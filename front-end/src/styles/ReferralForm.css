@@ -113,3 +113,9 @@ input[type='submit']:hover {
 .error{
   color: red;
 }
+
+.download-button {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+}

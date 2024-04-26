@@ -1,10 +1,13 @@
 // ReferralForm.js
 import React from 'react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 import '../styles/ReferralForm.css';
 
 function ReferralForm() {
     const [isSubmit, setSubmit] = useState(false);
+    const formRef = useRef(null);
     const [jobSeekers, setJobSeekers] = useState([]);
     const [formData, setFormData] = useState({
         firstname: '',
@@ -147,9 +150,36 @@ function ReferralForm() {
 
         
     };
+    // const handleDownloadReferralForm = () => {
+    //     const formDataJson = JSON.stringify(formData);
+    //     const blob = new Blob([formDataJson], { type: 'application/json' });
+    //     const url = URL.createObjectURL(blob);
+    //     const a = document.createElement('a');
+    //     a.href = url;
+    //     a.download = 'referral_form.json';
+    //     document.body.appendChild(a);
+    //     a.click();
+    //     document.body.removeChild(a);
+    //     URL.revokeObjectURL(url);
+    // };
+
+    const handleDownloadReferralForm = () => {
+        const input = document.getElementById('referralForm');
+
+        html2canvas(input)
+            .then((canvas) => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const width = pdf.internal.pageSize.getWidth();
+                const height = pdf.internal.pageSize.getHeight();
+                pdf.addImage(imgData, 'PNG', 0, 0, width, height);
+                pdf.save('referral_form.pdf');
+            });
+    };
     return (
         <div>
             <div className={`form-container ${isSubmit ? 'blur' : ''}`}>
+            <div ref={formRef} id="referralForm">
             <h1>Referral Form</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -404,11 +434,15 @@ function ReferralForm() {
                 <button type="submit">Submit</button>
             </form>
             </div>
+            </div>
             {isSubmit && (
                 <div className="submitted-animation">
                     Referral Form Submitted Successfully!
                 </div>
             )}
+             <div className="download-button">
+                <button onClick={handleDownloadReferralForm}>Download Referral Form</button>
+            </div>
         </div>
         
     );
