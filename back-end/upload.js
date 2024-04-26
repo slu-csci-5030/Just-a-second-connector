@@ -21,4 +21,29 @@ const upload = multer({
 			const ext = path.extname(file.originalname);
 			cb(null, uniqueSuffix + ext);
 		},
-	}),
+	}),	
+fileFilter: (req, file, cb) => {
+
+		// Check file types allowed for upload
+
+		if (file.mimetype === "application/pdf" || file.mimetype === "video/mp4") {
+
+			cb(null, true); // Accept the file
+
+		} else {
+
+			cb(new Error("Invalid file format")); // Reject the file
+
+		}
+
+	},
+
+}).fields([
+
+	{ name: "jobDescriptionFile", maxCount: 1 },
+
+	{ name: "videoFile", maxCount: 1 },
+
+]);
+ 
+export default upload;
