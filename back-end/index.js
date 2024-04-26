@@ -2,6 +2,8 @@ import { PORT, mongoDBURL } from "./config.js";
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import employerRouter from "./routes/employer.js";
+import upload from "./upload.js";
 import bodyParser from "body-parser";
  
 const app = express();
@@ -9,9 +11,17 @@ const app = express();
 // app.use((req, res, next) => {
 //  res.status(503).send({ message: "Site Under maintainance!" });
 // });
+ 
+// Middleware to handle file uploads
+app.use(upload);
+ 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+ 
+app.use("/Employer", employerRouter);
+// app.use("/Assets/equipments", equipmentRouter);
+// app.use("/User", userRouter);
+ 
 app.use(
     cors({
         origin: "http://localhost:5555/",
@@ -35,4 +45,5 @@ mongoose
     })
     .catch((err) => {
         console.log(err);
-    });
+    }); 
+    
