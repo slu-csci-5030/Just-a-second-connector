@@ -440,7 +440,7 @@ function ReferralForm() {
                     Referral Form Submitted Successfully!
                 </div>
             )}
-             <div className="button">
+             <div className="download-button">
                 <button onClick={handleDownloadReferralForm}>Download Referral Form</button>
             </div>
         </div>
