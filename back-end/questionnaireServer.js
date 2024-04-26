@@ -1,8 +1,8 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 
-const app = express();
+let router = express.Router();
 const PORT = process.env.PORT || 8081;
 
 // MongoDB connection URI
@@ -59,11 +59,11 @@ const questionnaireSchema = new mongoose.Schema({
 const Questionnaire = mongoose.model('Questionnaire', questionnaireSchema);
 
 // Handle JSON and form data parsing
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: true }));
 
 // Handle POST request for questionnaire form data
-app.post('/questionnareform', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const newQuestionnaire = new Questionnaire(req.body);
         await newQuestionnaire.save();
@@ -75,7 +75,10 @@ app.post('/questionnareform', async (req, res) => {
     }
 });
 
+export default router;
+
 // Start the server
-app.listen(PORT, () => {
+/* app.listen(PORT, () => {
     console.log(`Server1 is running on http://localhost:8081`);
 });
+ */

@@ -1,16 +1,16 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
-const app = express();
+import express from "express";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
+import multer from "multer";
+import path from "path";
+import fs from "fs";
+let router = express.Router();
 
 const port = 8082;
-const cors = require("cors");
+import cors from "cors";
 
 // Use CORS middleware
-app.use(cors());
+router.use(cors());
 
 // MongoDB connection configuration
 const connectionString = "mongodb+srv://sowmyamutya20:K8oT6RIgxfZQctyY@cluster0.lohfogg.mongodb.net/";
@@ -50,8 +50,8 @@ const employerFormSchema = new Schema({
 const EmployerForm = mongoose.model('EmployerForm', employerFormSchema);
 
 // Middleware to parse JSON and urlencoded bodies
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json());
 
 // Multer configuration for handling file uploads
 const upload = multer({
@@ -89,10 +89,10 @@ const upload = multer({
 ]);
 
 // Middleware to handle file uploads
-app.use(upload);
+router.use(upload);
 
 // Define route for submitting employer forms
-app.post("/employer_forms", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const formData = req.body;
 
@@ -120,7 +120,10 @@ app.post("/employer_forms", async (req, res) => {
   }
 });
 
+export default router;
+
 // Start the server
-app.listen(port, () => {
+/* app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+ */
