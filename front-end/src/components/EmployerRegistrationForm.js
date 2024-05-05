@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios
 import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 import '../styles/EmployerRegistrationForm.css'; 
 
-const EmployerRegistrationForm = () => {
+function EmployerRegistrationForm() {
     const [isSubmit, setSubmit] = useState(false);
+    const [jobSeekers, setJobSeekers] = useState([]);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -76,34 +78,26 @@ const EmployerRegistrationForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formDataWithFiles = new FormData();
-        Object.entries(formData).forEach(([key, value]) => {
-            if (value instanceof File) {
-                formDataWithFiles.append(key, value, value.name);
-            } else {
-                formDataWithFiles.append(key, value);
+        const errors = {};
+        Object.keys(formData).forEach((key) => {
+            if (!formData[key]) {
+                errors[key] = 'This field is required';
             }
         });
-    
-        try {
-            const response = await axios.post("http://localhost:8082/employer_forms", formDataWithFiles, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            if (response.status === 201) {
-                console.log('Form submitted successfully');
-                resetFormData();
-            } else {
-                console.error('Error submitting form:', response.data);
-            }
-        } catch (error) {
-            console.error('Error:', error);
+        if (Object.keys(errors).length > 0) {
+            setFormErrors(errors);
+            return;
         }
+        const response = await axios.post("http://localhost:8080/demo", formData, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log(response.data);  
+        setJobSeekers((prevJobSeekers) => [...prevJobSeekers, formData]);
+        setSubmit(true);
     };
     
-    
-    // Function to reset form data and errors
     const resetFormData = () => {
         setFormData({
             name: '',
@@ -137,36 +131,35 @@ const EmployerRegistrationForm = () => {
             additionalInformation: '',
         });
     };
-    const handleDownloadPDF = () => {
-        const doc = new jsPDF();
-        doc.text('Employer Registration Form', 10, 10);
-        doc.text(`Name: ${formData.name}`, 10, 20);
-        doc.text(`Email: ${formData.email}`, 10, 30);
-        doc.text(`Company Name: ${formData.companyName}`, 10, 40);
-        // Add more fields as needed
-        doc.save('registration_form.pdf');
+    
+    const handleEmployerForm = () => {
+        const form = document.getElementById('EmployerForm');
+    
+        html2canvas(form, { scale: 2 })
+            .then((canvas) => {
+                const imgData = canvas.toDataURL('image/png');
+    
+                const aspectRatio = canvas.width / canvas.height;
+    
+                const pdfWidth = window.innerWidth * 0.33;
+                const pdfHeight = pdfWidth / aspectRatio;
+    
+                const pdf = new jsPDF('p', 'px', [pdfWidth, pdfHeight]);
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                pdf.save('EmployerForm.pdf');
+            });
     };
 
     return (
         <div>
             <div className={`form-container ${isSubmit ? 'blur' : ''}`}>
                 <h1>Employer Registration Form</h1>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} id="EmployerForm">
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
                         <input type="text" id="name" name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
                         {formErrors.name && <p className="error">{formErrors.name}</p>}
                     </div>
-                    <div className={`form-container ${isSubmit ? 'blur' : ''}`}>
-                    <h1>Employer Registration Form</h1>
-                    <form onSubmit={handleSubmit}>
-                    {/* Form fields */}
-                    <button type="submit">Submit</button>
-                    <button type="button" onClick={handleDownloadPDF}>Download PDF</button>
-                    </form>
-                    {isSubmit && <div>Form Submitted Successfully!</div>}
-                    </div>
-
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
@@ -253,14 +246,20 @@ const EmployerRegistrationForm = () => {
                         {formErrors.additionalInformation && <p className="error">{formErrors.additionalInformation}</p>}
                     </div>
                     <div>
-                        <button type="submit">Submit</button>
                     </div>
                 </form>
-
+                <button type="submit">Submit</button>
             </div>
             {isSubmit && (
                 <div className="submitted-animation">
-                    Employer Registration Form Submitted Successfully!
+                    Employer Form Submitted Successfully!
+                </div>
+            )}
+            {!isSubmit && (
+                <div className="vertical-center">
+                    <div className="download-button">
+                        <button onClick={handleEmployerForm}>Download Referral Form</button>
+                    </div>
                 </div>
             )}
         </div>
