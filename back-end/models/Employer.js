@@ -12,9 +12,9 @@ const employerSchema = new Schema({
 	eligibleBenefits: String,
 	shifts: [String],
 	hiringType: String,
-	jobDescriptionFile: String, // Change the type to store the link
+	jobDescriptionFile: String,
 	offensesQuestion: String,
-	videoFile: String, // Change the type to store the link
+	videoFile: String,
 	additionalInformation: String,
 	jobDescriptionFileURL: String,
 	videoFileURL: String,
