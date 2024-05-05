@@ -89,6 +89,17 @@ app.post("/employer_forms", upload.fields([
     const jobDescriptionFileURL = req.files['jobDescriptionFile'] ? `/uploads/${req.files['jobDescriptionFile'][0].filename}` : null;
     const videoFileURL = req.files['videoFile'] ? `/uploads/${req.files['videoFile'][0].filename}` : null;
 
+    // Check if the files have valid extensions
+    if (jobDescriptionFileURL && path.extname(jobDescriptionFile.filename) !== '.pdf') {
+      return res.status(400).send("Invalid file type for job description. Only .pdf files are allowed.");
+    }
+    if (videoFileURL && !['.mp4', '.avi', '.mov'].includes(path.extname(videoFile.filename))) {
+      return res.status(400).send("Invalid file type for video. Only .mp4, .avi, .mov files are allowed.");
+    }
+    if (!jobDescriptionFileURL || !videoFileURL) {
+      return res.status(400).send("Job description file and video file are required.");
+    }
+
     // Create a new EmployerForm document with file links and save it to the database
     const employerForm = new EmployerForm({
       ...formData,
