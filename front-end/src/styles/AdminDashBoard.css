@@ -51,6 +51,7 @@
     overflow: auto;
     background-color: rgb(230, 228, 228);
     border-radius: 20px;
+    padding: 20px;
 }
 
 .matching-heading{
@@ -96,11 +97,10 @@
     left: 100px;
     width: 50%;
     white-space: nowrap;
-    overflow: hidden; /* Ensures text doesn't spill outside its container */
-    text-overflow: ellipsis; /* Adds an ellipsis if the text is too long to fit */
-    font-size: 25px; /* Adjust font-size as needed */
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    font-size: 25px; 
     font-weight: bold;
-    /* Add any additional styling as required */
 }
 .matched-pair-box{
     background-color: white;
@@ -109,6 +109,7 @@
     margin-left: 10px;
     overflow: auto;
     border-radius: 10px;
+    padding: 20px;
 }
 
 .paired-data{
@@ -117,25 +118,24 @@
 }
 
 .scrollable button.accept-button {
-    background-color: #28a745; /* Green for accept */
+    background-color: #28a745; 
     width: auto;
     margin-right: 10px;
     border-radius: 0;
 }
 
 .scrollable button.reject-button {
-    background-color: #dc3545; /* Red for reject */
+    background-color: #dc3545; 
     width: auto;
     border-radius: 0;
 }
   
   .accept-button:hover {
-    background-color: #218838; /* Darker Green */
-    transform: translateY(-2px); /* Slight lift effect on hover */
+    background-color: #218838; 
+    transform: translateY(-2px); 
   }
   
   .reject-button:hover {
-    background-color: #c82333; /* Darker Red */
-    transform: translateY(-2px); /* Slight lift effect on hover */
+    background-color: #c82333; 
+    transform: translateY(-2px); 
   }
-  

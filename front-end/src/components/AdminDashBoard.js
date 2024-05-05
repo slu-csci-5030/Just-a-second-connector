@@ -159,6 +159,12 @@ const AdminDashboard = () => {
           >
             Matched jobseekers with job coaches
           </div>
+          <div
+            className="content"
+            onClick={() => handleOptionClick("matchedJobseekers")}
+          >
+            Matched jobseekers with Employers
+          </div>
         </div>
 
         <div className="navbar-right">
