@@ -1,10 +1,11 @@
-// ReferralForm.js
-import React from 'react';
-import { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 import '../styles/ReferralForm.css';
 
 function ReferralForm() {
     const [isSubmit, setSubmit] = useState(false);
+    const formRef = useRef(null);
     const [jobSeekers, setJobSeekers] = useState([]);
     const [formData, setFormData] = useState({
         firstname: '',
@@ -75,8 +76,6 @@ function ReferralForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        
         const errors = {};
         Object.keys(formData).forEach((key) => {
             if (!formData[key]) {
@@ -138,20 +137,36 @@ function ReferralForm() {
             referrername: '',
             referrerorganization: '',
             referreremail: '',
-            rating: '',
-            felonyDate: '',
-            knowsReferral: '',
-            selfDescription: '',
-            felonyConvictionDate: '',
         });
 
         
     };
+
+    const handleDownloadReferralForm = () => {
+        const input = document.getElementById('referralForm');
+
+        html2canvas(input, { scale: 2 })
+            .then((canvas) => {
+                const imgData = canvas.toDataURL('image/png');
+
+                const aspectRatio = canvas.width / canvas.height;
+
+                const pdfWidth = window.innerWidth * 0.33;
+                const pdfHeight = pdfWidth / aspectRatio;
+
+                const pdf = new jsPDF('p', 'px', [pdfWidth, pdfHeight]);
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                pdf.save('referral_form.pdf');
+            });
+    };
+    
+    
     return (
         <div>
             <div className={`form-container ${isSubmit ? 'blur' : ''}`}>
-            <h1>Referral Form</h1>
-            <form onSubmit={handleSubmit}>
+                <div ref={formRef} id="referralForm">
+                    <h1>Referral Form</h1>
+                    <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="firstname">Jobseeker First Name</label>
                     <input type="text" id="firstname" name="firstname" placeholder="First Name" onChange={handleChange}/>
@@ -401,17 +416,24 @@ function ReferralForm() {
                     {formErrors.additionalComments && <p className="error">{formErrors.additionalComments}</p>}
 
                 </div>
-                <button type="submit">Submit</button>
-            </form>
+                </form>
             </div>
-            {isSubmit && (
-                <div className="submitted-animation">
-                    Referral Form Submitted Successfully!
-                </div>
-            )}
+            <button type="submit">Submit</button>
         </div>
+        {isSubmit && (
+            <div className="submitted-animation">
+                Referral Form Submitted Successfully!
+            </div>
+        )}
         
-    );
-}
+        {!isSubmit && (
+            <div class="vertical-center">
+                <div class="download-button">
+                <button onClick={handleDownloadReferralForm}>Download Referral Form</button>
+            </div>
+            </div>
+        )}
+    </div>
+);}
 
 export default ReferralForm;
