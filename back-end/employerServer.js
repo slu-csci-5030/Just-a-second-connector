@@ -12,19 +12,20 @@ const cors = require("cors");
 // Use CORS middleware
 app.use(cors());
 
+// Use bodyParser to parse JSON and urlencoded bodies
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 // MongoDB connection configuration
 const connectionString = "mongodb+srv://sowmyamutya20:K8oT6RIgxfZQctyY@cluster0.lohfogg.mongodb.net/";
-
-mongoose.connect(connectionString, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect(connectionString)
 .then(() => {
   console.log('Connected to MongoDB');
 })
 .catch((error) => {
   console.error('Error connecting to MongoDB:', error);
 });
+
 
 // Define MongoDB schema and model
 const Schema = mongoose.Schema;
@@ -39,9 +40,9 @@ const employerFormSchema = new Schema({
   eligibleBenefits: String,
   shifts: [String],
   hiringType: String,
-  jobDescriptionFile: String, // Change the type to store the link
+  jobDescriptionFile: String,
   offensesQuestion: String,
-  videoFile: String, // Change the type to store the link
+  videoFile: String,
   additionalInformation: String,
   jobDescriptionFileURL: String,
   videoFileURL: String,
@@ -49,67 +50,50 @@ const employerFormSchema = new Schema({
 
 const EmployerForm = mongoose.model('EmployerForm', employerFormSchema);
 
-// Middleware to parse JSON and urlencoded bodies
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-// Multer configuration for handling file uploads
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: (req, file, cb) => {
-      // Define the upload destination directory
-      const uploadDir = path.join(__dirname, 'uploads');
-      // Create the directory if it doesn't exist
-      if (!fs.existsSync(uploadDir)) {
-        fs.mkdirSync(uploadDir);
-      }
-      cb(null, uploadDir);
-    },
-    filename: (req, file, cb) => {
-      // Generate a unique filename to prevent overwriting
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-      const ext = path.extname(file.originalname);
-      cb(null, uniqueSuffix + ext);
+// Configure Multer for file storage
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const uploadDir = path.join(__dirname, 'uploads');
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir); // Create the directory if it doesn't exist
     }
-  }),
+    cb(null, uploadDir);
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, `${file.fieldname}-${uniqueSuffix}${path.extname(file.originalname)}`); // Generate a unique filename
+  }
+});
+
+const upload = multer({
+  storage: storage,
   fileFilter: (req, file, cb) => {
     // Check file types allowed for upload
-    if (
-      file.mimetype === 'application/pdf' ||
-      file.mimetype === 'video/mp4'
-    ) {
+    if (file.mimetype === 'application/pdf' || file.mimetype === 'video/mp4') {
       cb(null, true); // Accept the file
     } else {
-      cb(new Error('Invalid file format')); // Reject the file
+      cb(new Error('Invalid file format'), false); // Reject the file
     }
   }
-}).fields([
-  { name: 'jobDescriptionFile', maxCount: 1 },
-  { name: 'videoFile', maxCount: 1 }
-]);
-
-// Middleware to handle file uploads
-app.use(upload);
+});
 
 // Define route for submitting employer forms
-app.post("/employer_forms", async (req, res) => {
+app.post("/employer_forms", upload.fields([
+  { name: 'jobDescriptionFile', maxCount: 1 },
+  { name: 'videoFile', maxCount: 1 }
+]), async (req, res) => {
   try {
     const formData = req.body;
 
-    // Store file paths for job description file and video file
-    //const jobDescriptionFileLink = req.files['jobDescriptionFile'] ? `http://localhost:8082/uploads/${req.files['jobDescriptionFile'][0].filename}` : null;
-    //const videoFileLink = req.files['videoFile'] ? `http://localhost:8082/uploads/${req.files['videoFile'][0].filename}` : null;
-     
+    // Retrieve the file paths for job description file and video file
     const jobDescriptionFileURL = req.files['jobDescriptionFile'] ? `/uploads/${req.files['jobDescriptionFile'][0].filename}` : null;
     const videoFileURL = req.files['videoFile'] ? `/uploads/${req.files['videoFile'][0].filename}` : null;
 
     // Create a new EmployerForm document with file links and save it to the database
     const employerForm = new EmployerForm({
       ...formData,
-      //jobDescriptionFile: jobDescriptionFileLink,
-      //videoFile: videoFileLink
-      jobDescriptionFileURL,
-      videoFileURL,
+      jobDescriptionFileURL,  // Store the URL for the job description file
+      videoFileURL,           // Store the URL for the video file
     });
     await employerForm.save();
 
