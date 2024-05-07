@@ -1,10 +1,16 @@
 import express from "express";
 import { Employer } from "../models/Employer.js";
+import matching_response from "./matching.js";
 
 const employerRouter = express.Router();
 
-employerRouter.get("/", (req, res) => {
-	res.status(200).send({ message: "Hello, World!" });
+employerRouter.get("/", async (req, res) => {
+	try {
+		const allEmployers = await Employer.find({});
+		res.status(200).send(allEmployers);
+	} catch (error) {
+		res.status(404).send({ message: error.message });
+	}
 });
 
 employerRouter.post("/registration", async (req, res) => {

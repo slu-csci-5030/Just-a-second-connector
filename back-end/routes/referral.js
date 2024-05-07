@@ -4,6 +4,15 @@ import { Questionnaire } from "../models/Questionnaire.js";
 
 const referralRouter = express.Router();
 
+referralRouter.get("/", async (req, res) => {
+	try {
+		const allReferals = await Referral.find({});
+		res.status(200).send(allReferals);
+	} catch (error) {
+		res.status(404).send({ message: error.message });
+	}
+});
+
 referralRouter.post("/referral", async (req, res) => {
 	try {
 		const formData = req.body;

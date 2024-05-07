@@ -6,6 +6,7 @@ import employerRouter from "./routes/employer.js";
 import referralRouter from "./routes/referral.js";
 import upload from "./upload.js";
 import bodyParser from "body-parser";
+import matching_response from "./routes/matching.js";
 
 const app = express();
 
@@ -44,6 +45,9 @@ mongoose
 			console.log(`Example app listening on port ${PORT}`);
 			console.log(`Check http://localhost:${PORT}`);
 		});
+	})
+	.then(() => {
+		matching_response();
 	})
 	.catch((err) => {
 		console.log(err);
