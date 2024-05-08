@@ -1,6 +1,7 @@
 import express from "express";
 import { Employer } from "../models/Employer.js";
 import matching_response from "./matching.js";
+import { Match } from "../models/Match.js";
 
 const employerRouter = express.Router();
 
@@ -27,6 +28,27 @@ employerRouter.post("/registration", async (req, res) => {
 	} catch (error) {
 		console.error("Error submitting employer form:", error);
 		res.status(500).send("Internal server error");
+	}
+});
+
+employerRouter.post("/pmatches", async (req, res) => {
+	try {
+		let matches = await matching_response();
+		console.log(matches);
+		matches = new Match({ data: matches });
+		await matches.save();
+		res.status(200).send("Success!");
+	} catch (error) {
+		res.status(404).send({ error: error.message });
+	}
+});
+
+employerRouter.get("/gmatches", async (req, res) => {
+	try {
+		const matches = await Match.find({});
+		res.status(200).json(matches);
+	} catch (error) {
+		res.status(404).send({ error: error.message });
 	}
 });
 
