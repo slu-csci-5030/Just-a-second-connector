@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios
-import { jsPDF } from 'jspdf';
 import '../styles/EmployerRegistrationForm.css'; 
 
 const EmployerRegistrationForm = () => {
@@ -137,15 +136,7 @@ const EmployerRegistrationForm = () => {
             additionalInformation: '',
         });
     };
-    const handleDownloadPDF = () => {
-        const doc = new jsPDF();
-        doc.text('Employer Registration Form', 10, 10);
-        doc.text(`Name: ${formData.name}`, 10, 20);
-        doc.text(`Email: ${formData.email}`, 10, 30);
-        doc.text(`Company Name: ${formData.companyName}`, 10, 40);
-        // Add more fields as needed
-        doc.save('registration_form.pdf');
-    };
+    
 
     return (
         <div>
@@ -157,16 +148,6 @@ const EmployerRegistrationForm = () => {
                         <input type="text" id="name" name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
                         {formErrors.name && <p className="error">{formErrors.name}</p>}
                     </div>
-                    <div className={`form-container ${isSubmit ? 'blur' : ''}`}>
-                    <h1>Employer Registration Form</h1>
-                    <form onSubmit={handleSubmit}>
-                    {/* Form fields */}
-                    <button type="submit">Submit</button>
-                    <button type="button" onClick={handleDownloadPDF}>Download PDF</button>
-                    </form>
-                    {isSubmit && <div>Form Submitted Successfully!</div>}
-                    </div>
-
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
