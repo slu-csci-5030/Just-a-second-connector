@@ -94,11 +94,8 @@
 .scroll-section h3{
     color: black;
     position: relative;
-    left: 100px;
-    width: 50%;
-    white-space: nowrap;
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+    white-space: break-spaces;
+    overflow: hidden;  
     font-size: 25px; 
     font-weight: bold;
 }
