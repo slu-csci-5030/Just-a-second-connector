@@ -46,9 +46,6 @@ mongoose
 			console.log(`Check http://localhost:${PORT}`);
 		});
 	})
-	.then(() => {
-		matching_response();
-	})
 	.catch((err) => {
 		console.log(err);
 	});

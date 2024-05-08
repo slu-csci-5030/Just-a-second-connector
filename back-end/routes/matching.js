@@ -37,7 +37,7 @@ async function matching_response() {
 		}
 		matchings[employers[i]["companyName"]] = cands;
 	}
-	console.log(matchings);
+	return matchings;
 }
 
 export default matching_response;
