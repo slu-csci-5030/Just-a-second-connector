@@ -66,15 +66,22 @@ function Homepage() {
                     <p>At TWA, we believe everyone deserves a second chance. We are dedicated to bridging the gap between individuals with past justice involvement and forward-thinking employers ready to embrace new talent. Join us in breaking barriers and building futures.</p><br />
                     <h2>How It Works For Job Seeker</h2>
                     <div className="instructions">
-                    
-                    <h4>Step 1: Fill the Referral Form</h4>
-                    <p>Begin your path to employment by registering with TWA. Fill out the referral form to tell us about yourself. This is your first step towards a brighter future.</p><br />
-                    <h4>Step 2: Match with a Job Coach</h4>
-                    <p>Once registered, you will be paired with a job coach who will guide you through training and prepare you for the workforce. Your coach will be a key resource in your employment journey.</p><br />
-                    <h4>Step 3: Complete the Questionnaire</h4>
-                    <p>Help us understand your skills, preferences, and the type of work you’re looking for by filling out the questionnaire. This information will assist us in finding the right match for you.</p><br />
-                    <h4>Step 4: Get Matched with Employers</h4>
-                    <p>Based on your profile and questionnaire responses, we will match you with potential employers. Our goal is to find the best fit for both you and the employer to ensure long-term success.</p><br />
+                      <div className="step-box">
+                        <h4>Step 1: Fill the Referral Form</h4>
+                        <p>Begin your path to employment by registering with TWA. Fill out the referral form to tell us about yourself. This is your first step towards a brighter future.</p><br />
+                      </div>
+                      <div className="step-box">
+                        <h4>Step 2: Match with a Job Coach</h4>
+                        <p>Once registered, you will be paired with a job coach who will guide you through training and prepare you for the workforce. Your coach will be a key resource in your employment journey.</p><br />
+                      </div>
+                      <div className="step-box">
+                        <h4>Step 3: Complete the Questionnaire</h4>
+                        <p>Help us understand your skills, preferences, and the type of work you’re looking for by filling out the questionnaire. This information will assist us in finding the right match for you.</p><br />
+                      </div>
+                      <div className="step-box">
+                        <h4>Step 4: Get Matched with Employers</h4>
+                        <p>Based on your profile and questionnaire responses, we will match you with potential employers. Our goal is to find the best fit for both you and the employer to ensure long-term success.</p><br />
+                      </div>
                     </div>
                     <p>Start Your Journey - Fill out the referral form today and take your first step toward a promising new career. Let’s redefine your future, together.</p>
                   </p>

@@ -106,26 +106,12 @@ const AdminDashboard = () => {
     );
   };
 
-  return (
-    <div className="admin-dashboard-container">
-      {/* Navbar Section */}
-
-      <div className="navbar">
-        <div className="navbar-left">
-          <div
-            className="content"
-            onClick={() => handleOptionClick("matchCoaches")}
-          >
-            Match job seekers with job coaches
-          </div>
-          <div
-            className="content"
-            onClick={() => handleOptionClick("matchEmployers")}
-          >
-            Match Jobseekers with Employers
-          </div>
-
-          {matchedPair.length > 0 && (
+  const renderMatchedJobseekersContent = () => {
+    // You can implement logic to render matched jobseekers with job coaches here
+    return (
+      <div className="scroll-section">
+        <h3>Matched Jobseekers with Job Coaches</h3>
+        {matchedPair.length > 0 && (
   <div className="matched-pair-box">
     {matchedPair.map((name, index) => {
       if (index % 2 === 0) { // Always display job coach
@@ -145,7 +131,40 @@ const AdminDashboard = () => {
     })}
   </div>
 )}
+      </div>
+    );
+  };
 
+  return (
+    <div className="admin-dashboard-container">
+      {/* Navbar Section */}
+
+      <div className="navbar">
+        <div className="navbar-left">
+          <div
+            className="content"
+            onClick={() => handleOptionClick("matchCoaches")}
+          >
+            Match job seekers with job coaches
+          </div>
+          <div
+            className="content"
+            onClick={() => handleOptionClick("matchEmployers")}
+          >
+            Match job seekers with employers
+          </div>
+          <div
+            className="content"
+            onClick={() => handleOptionClick("matchedJobseekers")}
+          >
+            Matched jobseekers with job coaches
+          </div>
+          <div
+            className="content"
+            onClick={() => handleOptionClick("matchedJobseekers")}
+          >
+            Matched jobseekers with Employers
+          </div>
         </div>
 
         <div className="navbar-right">
@@ -203,6 +222,7 @@ const AdminDashboard = () => {
               </div>
             )}
             {selectedOption === 'matchEmployers' && renderMatchEmployersContent()}
+            {selectedOption === 'matchedJobseekers' && renderMatchedJobseekersContent()}
           </div>
         </div>
       </div>

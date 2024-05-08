@@ -41,7 +41,16 @@
 }
 
 .instructions {
-  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.step-box {
+  width: 45%; 
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 
@@ -81,7 +90,7 @@
 .button:hover {
  
   color: #003DA5;
-  /*border-bottom: 3px solid #FFF;*/
+  border-bottom: 3px solid #FFF;
   background-color: white;
 }
 
