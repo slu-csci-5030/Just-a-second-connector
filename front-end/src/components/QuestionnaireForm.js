@@ -63,9 +63,14 @@ const QuestionnaireForm = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const response = await axios.post(
+			const response = await axios.postForm(
 				"http://localhost:5555/Jobseeker/questionnareform",
-				formData
+				formData,
+				{
+					headers: {
+						"content-type": "application/x-www-form-urlencoded",
+					},
+				}
 			);
 			console.log(response.data);
 			setSubmit(true);

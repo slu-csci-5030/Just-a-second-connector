@@ -2,6 +2,8 @@
 import React from "react";
 import { useState } from "react";
 import "../styles/ReferralForm.css";
+// import fetch from "node-fetch";
+import axios from "axios";
 
 function ReferralForm() {
 	const [isSubmit, setSubmit] = useState(false);
@@ -73,6 +75,78 @@ function ReferralForm() {
 		});
 	};
 
+	// const handleSubmit = async (e) => {
+	// 	e.preventDefault();
+
+	// 	const errors = {};
+	// 	Object.keys(formData).forEach((key) => {
+	// 		if (!formData[key]) {
+	// 			errors[key] = "This field is required";
+	// 		}
+	// 	});
+
+	// 	// If there are errors, display warnings and prevent form submission
+	// 	if (Object.keys(errors).length > 0) {
+	// 		setFormErrors(errors);
+	// 		return;
+	// 	}
+	// 	// const response =
+	// 	await fetch("http://localhost:5555/Jobseeker/referral", {
+	// 		method: "POST",
+	// 		body: JSON.stringify(formData),
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 		},
+	// 	})
+	// 		.then((response) => {
+	// 			console.log(response.json());
+	// 		})
+	// 		.catch((error) => {
+	// 			console.log(error);
+	// 		});
+	// 	setJobSeekers((prevJobSeekers) => [...prevJobSeekers, formData]);
+
+	// 	setSubmit(true);
+
+	// 	// Clear the form data and errors after submission
+	// 	setFormData({
+	// 		firstname: "",
+	// 		lastname: "",
+	// 		phone: "",
+	// 		email: "",
+	// 		iam: "",
+	// 		referrername: "",
+	// 		referrerorganization: "",
+	// 		referreremail: "",
+	// 		rating: "",
+	// 		barriers: [],
+	// 		convictions: [],
+	// 		felonyDate: "",
+	// 		knowsReferral: "",
+	// 		additionalInfo: "",
+	// 		selfDescription: "",
+	// 		selfBarriers: [],
+	// 		backgroundCheckIssues: [],
+	// 		felonyConvictionDate: "",
+	// 		additionalComments: "",
+	// 	});
+	// 	setFormErrors({
+	// 		firstname: "",
+	// 		lastname: "",
+	// 		phone: "",
+	// 		email: "",
+	// 		iam: "",
+	// 		referrername: "",
+	// 		referrerorganization: "",
+	// 		referreremail: "",
+	// 		rating: "",
+	// 		felonyDate: "",
+	// 		knowsReferral: "",
+	// 		selfDescription: "",
+	// 		felonyConvictionDate: "",
+	// 	});
+	// };
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
@@ -88,57 +162,67 @@ function ReferralForm() {
 			setFormErrors(errors);
 			return;
 		}
-		const response = await fetch("http://localhost:5555/Jobseeker/referral", {
-			method: "POST",
-			body: JSON.stringify(formData),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		const data = await response.json();
-		console.log(data);
-		setJobSeekers((prevJobSeekers) => [...prevJobSeekers, formData]);
 
-		setSubmit(true);
+		try {
+			const response = await axios.postForm(
+				"http://localhost:5555/Jobseeker/referral",
+				formData,
+				{
+					headers: {
+						"content-type": "application/x-www-form-urlencoded",
+					},
+				}
+			);
+			console.log(response.data); // Assuming the response contains useful data
 
-		// Clear the form data and errors after submission
-		setFormData({
-			firstname: "",
-			lastname: "",
-			phone: "",
-			email: "",
-			iam: "",
-			referrername: "",
-			referrerorganization: "",
-			referreremail: "",
-			rating: "",
-			barriers: [],
-			convictions: [],
-			felonyDate: "",
-			knowsReferral: "",
-			additionalInfo: "",
-			selfDescription: "",
-			selfBarriers: [],
-			backgroundCheckIssues: [],
-			felonyConvictionDate: "",
-			additionalComments: "",
-		});
-		setFormErrors({
-			firstname: "",
-			lastname: "",
-			phone: "",
-			email: "",
-			iam: "",
-			referrername: "",
-			referrerorganization: "",
-			referreremail: "",
-			rating: "",
-			felonyDate: "",
-			knowsReferral: "",
-			selfDescription: "",
-			felonyConvictionDate: "",
-		});
+			setJobSeekers((prevJobSeekers) => [...prevJobSeekers, formData]);
+			setSubmit(true);
+
+			// Clear the form data and errors after submission
+			setFormData({
+				firstname: "",
+				lastname: "",
+				phone: "",
+				email: "",
+				iam: "",
+				referrername: "",
+				referrerorganization: "",
+				referreremail: "",
+				rating: "",
+				barriers: [],
+				convictions: [],
+				felonyDate: "",
+				knowsReferral: "",
+				additionalInfo: "",
+				selfDescription: "",
+				selfBarriers: [],
+				backgroundCheckIssues: [],
+				felonyConvictionDate: "",
+				additionalComments: "",
+				/* Reset formData here */
+			});
+			setFormErrors({
+				firstname: "",
+				lastname: "",
+				phone: "",
+				email: "",
+				iam: "",
+				referrername: "",
+				referrerorganization: "",
+				referreremail: "",
+				rating: "",
+				felonyDate: "",
+				knowsReferral: "",
+				selfDescription: "",
+				felonyConvictionDate: "",
+				/* Reset formErrors here */
+			});
+		} catch (error) {
+			console.error("Error submitting form:", error);
+			// Handle error state here if needed
+		}
 	};
+
 	return (
 		<div>
 			<div className={`form-container ${isSubmit ? "blur" : ""}`}>

@@ -27,9 +27,10 @@ app.use("/Jobseeker", referralRouter);
 
 app.use(
 	cors({
-		origin: "http://localhost:5555/",
-		methods: ["GET", "POST", "PUT", "DELETE"],
-		allowedHeaders: ["Content-Type"],
+		"Access-Control-Allow-Origin": "*",
+		methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+		preflightContinue: false,
+		optionsSuccessStatus: 204,
 	})
 );
 
@@ -44,6 +45,11 @@ mongoose
 		app.listen(PORT, () => {
 			console.log(`Example app listening on port ${PORT}`);
 			console.log(`Check http://localhost:${PORT}`);
+		});
+	})
+	.then(() => {
+		app.get("http://localhost:5555/Employer/pmatches", (res) => {
+			console.log(res.json());
 		});
 	})
 	.catch((err) => {
