@@ -34,7 +34,8 @@ const AdminDashboard = () => {
     "Taylor",
   ]);
 
-  const [matchedPair, setMatchedPair] = useState([]);
+  const [matchedPairs, setMatchedPairs] = useState([]);
+  const [acceptedMatches, setAcceptedMatches] = useState([]);
 
   const setDefaultValues = () => {
     setCount(0);
@@ -42,37 +43,62 @@ const AdminDashboard = () => {
   useEffect(() => {
     setDefaultValues();
   }, []);
+
   const handleOptionClick = (option) => {
-    console.log("CLicked");
     setSelectedOption(option);
   };
 
-  //handleing functions here
+  //handling functions here
   const handleAddJobCoach = (jobcoachName) => {
-    console.log(count);
     if (count === 0) {
-      console.log("clicked job coaches button", jobcoachName);
-      setMatchedPair((previousData) => [...previousData, jobcoachName]);
+      setMatchedPairs((previousPairs) => [...previousPairs, [jobcoachName]]);
       setCount(count + 1);
     } else {
       setCount(1);
-      alert("Please select Job seeker, Before Selecting another Job coach");
+      alert("Please select a Job seeker before selecting another Job coach");
     }
   };
 
   const handleAddJobSeekers = (jobseekerName) => {
     if (count === 1) {
-      console.log("clicked job coaches button", jobseekerName);
-      setMatchedPair((previousData) => [...previousData, jobseekerName]);
-      setJobseekersNames(previousData => previousData.filter(name => name !== jobseekerName))
+      setMatchedPairs((previousPairs) => {
+        const updatedPairs = [...previousPairs];
+        updatedPairs[updatedPairs.length - 1].push(jobseekerName);
+        return updatedPairs;
+      });
+      setJobseekersNames((previousData) =>
+        previousData.filter((name) => name !== jobseekerName)
+      );
       setCount(0);
     } else {
-      alert("Select a Job coach, Before selecting Job Seeker");
+      alert("Select a Job coach before selecting a Job Seeker");
     }
   };
-  
+
+  const handleAcceptMatch = (jobSeeker) => {
+    setAcceptedMatches((prevMatches) => [...prevMatches, jobSeeker]);
+    setJobseekersNames((prevNames) =>
+      prevNames.filter((name) => name !== jobSeeker.name)
+    );
+    setMatchedPairs((prevPairs) => {
+      const updatedPairs = [...prevPairs];
+      const lastPair = updatedPairs[updatedPairs.length - 1];
+      lastPair.push(jobSeeker.name);
+      return updatedPairs;
+    });
+  };
+
+  const handleRejectMatch = (jobSeeker) => {
+    setJobseekersNames((prevNames) =>
+      prevNames.filter((name) => name !== jobSeeker.name)
+    );
+    setMatchedPairs((prevPairs) =>
+      prevPairs.map((pair) => pair.filter((name) => name !== jobSeeker.name))
+    );
+  };
+
   const renderMatchEmployersContent = () => {
-    const matchedJobSeekers = [
+    const unmatchedJobSeekers = [
       { id: 1, name: "Emily White", employer: "ABC Corp" },
       { id: 2, name: "Christopher Green", employer: "XYZ Inc" },
       { id: 3, name: "Jessica Turner", employer: "123 Industries" },
@@ -84,19 +110,33 @@ const AdminDashboard = () => {
       { id: 9, name: "Elizabeth Allen", employer: "Tech Titans" },
       { id: 10, name: "Ryan Young", employer: "Digital Dreamers" },
       // Add more matched job seekers here if needed
-    ];
-    
+    ].filter(
+      (jobSeeker) =>
+        !acceptedMatches.find((match) => match.name === jobSeeker.name) &&
+        !matchedPairs.flat().includes(jobSeeker.name)
+    );
+
     return (
       <div className="scroll-section">
         <h3>Current Matches</h3>
         <div className="scrollable">
           <div className="content-long">
             <ul>
-              {matchedJobSeekers.map((jobSeeker) => (
+              {unmatchedJobSeekers.map((jobSeeker) => (
                 <li key={jobSeeker.id}>
                   {jobSeeker.name} - Matched with {jobSeeker.employer}
-                  <button className="accept-button">Accept</button>
-                  <button className="reject-button">Reject</button>
+                  <button
+                    className="accept-button"
+                    onClick={() => handleAcceptMatch(jobSeeker)}
+                  >
+                    Accept
+                  </button>
+                  <button
+                    className="reject-button"
+                    onClick={() => handleRejectMatch(jobSeeker)}
+                  >
+                    Reject
+                  </button>
                 </li>
               ))}
             </ul>
@@ -107,30 +147,46 @@ const AdminDashboard = () => {
   };
 
   const renderMatchedJobseekersContent = () => {
-    // You can implement logic to render matched jobseekers with job coaches here
     return (
       <div className="scroll-section">
-        <h3>Matched Jobseekers with Job Coaches</h3>
-        {matchedPair.length > 0 && (
-  <div className="matched-pair-box">
-    {matchedPair.map((name, index) => {
-      if (index % 2 === 0) { // Always display job coach
-        return (
-          <div key={index / 2} className="paired-data">
-            <p>
-              <strong>Job Coach:</strong> {name}
-            </p>
-            <p>
-              <strong>Job Seeker:</strong> {matchedPair[index + 1] || 'Not selected'}
-            </p>
+        <h3>Matched Jobseekers with Coaches</h3>
+        <div className="scrollable">
+          <div className="content-long">
+            {matchedPairs.map((pair, index) => (
+              <div className="paired-data" key={index}>
+                <p>
+                  <strong>Job Coach:</strong> {pair[0]}
+                </p>
+                <p>
+                  <strong>Job Seeker:</strong>{" "}
+                  {pair[1] ? pair[1] : "Not selected"}
+                </p>
+              </div>
+            ))}
           </div>
-        );
-      } else {
-        return null; // Skip rendering if not paired with job coach
-      }
-    })}
-  </div>
-)}
+        </div>
+      </div>
+    );
+  };
+
+  const renderMatchedEmployersContent = () => {
+    return (
+      <div className="scroll-section">
+        <h3>Matched Jobseekers with Employers</h3>
+        <div className="scrollable">
+          <div className="content-long">
+            {acceptedMatches.map((jobSeeker, index) => (
+              <div className="paired-data" key={index}>
+                <p>
+                  <strong>Job Seeker:</strong> {jobSeeker.name}
+                </p>
+                <p>
+                  <strong>Employer:</strong> {jobSeeker.employer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
   };
@@ -161,7 +217,7 @@ const AdminDashboard = () => {
           </div>
           <div
             className="content"
-            onClick={() => handleOptionClick("matchedJobseekers")}
+            onClick={() => handleOptionClick("matchedEmployers")}
           >
             Matched jobseekers with Employers
           </div>
@@ -221,13 +277,15 @@ const AdminDashboard = () => {
                 </div>
               </div>
             )}
-            {selectedOption === 'matchEmployers' && renderMatchEmployersContent()}
-            {selectedOption === 'matchedJobseekers' && renderMatchedJobseekersContent()}
+            {selectedOption === "matchEmployers" &&
+              renderMatchEmployersContent()}
+            {selectedOption === "matchedJobseekers" &&
+              renderMatchedJobseekersContent()}
+            {selectedOption === "matchedEmployers" &&
+              renderMatchedEmployersContent()}
           </div>
         </div>
       </div>
-
-      {/* Main Dashboard Content */}
     </div>
   );
 };
