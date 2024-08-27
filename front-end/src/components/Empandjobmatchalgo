@@ -1,0 +1,68 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function JobMatchingApp() {
+  const [jobSeekers, setJobSeekers] = useState([]);
+  const [employers, setEmployers] = useState([]);
+  const [matchedEmployers, setMatchedEmployers] = useState([]);
+  const [selectedJobSeeker, setSelectedJobSeeker] = useState(null);
+
+  useEffect(() => {
+    // Fetch job seekers and employers data from the server
+    axios.get('/api/job-seekers')
+      .then(response => setJobSeekers(response.data))
+      .catch(error => console.error('Error fetching job seekers:', error));
+
+    axios.get('/api/employers')
+      .then(response => setEmployers(response.data))
+      .catch(error => console.error('Error fetching employers:', error));
+  }, []);
+
+  const handleJobSeekerChange = (event) => {
+    setSelectedJobSeeker(event.target.value);
+  }
+
+  const matchJobSeekerWithEmployers = () => {
+    // Call the matching algorithm API
+    axios.post('/api/match', { jobSeekerId: selectedJobSeeker })
+      .then(response => setMatchedEmployers(response.data))
+      .catch(error => console.error('Error matching job seeker:', error));
+  }
+
+  return (
+    <div>
+      <h1>Job Matching Application</h1>
+
+      <div>
+        <label htmlFor="jobSeeker">Select Job Seeker:</label>
+        <select id="jobSeeker" value={selectedJobSeeker} onChange={handleJobSeekerChange}>
+          <option value="">Select a job seeker</option>
+          {jobSeekers.map(jobSeeker => (
+            <option key={jobSeeker.id} value={jobSeeker.id}>{jobSeeker.name}</option>
+          ))}
+        </select>
+        <button onClick={matchJobSeekerWithEmployers}>Match with Employers</button>
+      </div>
+
+      <div>
+        <h2>Matched Employers</h2>
+        {matchedEmployers.length > 0 ? (
+          <ul>
+            {matchedEmployers.map(employer => (
+              <li key={employer.id}>
+                <h3>{employer.name}</h3>
+                <p>Similarity Score: {employer.similarityScore}</p>
+                <p>Job Description: {employer.jobDescription}</p>
+                {/* Add other employer details */}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No matched employers found.</p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default JobMatchingApp;
