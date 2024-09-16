@@ -1,0 +1,118 @@
+/* App.css */
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* index.css */
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("https://community.thriveglobal.com/wp-content/uploads/2018/09/GettyImages-743706161.jpg");
+  background-size: contain;
+  max-height: 100vh;
+  display: flex;
+  font-weight: 400;
+  font-family: "Fira Sans", sans-serif;
+  color: #181717;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+span {
+  font-weight: 500;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+}
+
+.navbar-light {
+  background-color: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+}
+
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth-inner {
+  width: 90%; /* Adjusted width for responsiveness */
+  max-width: 450px; /* Added max-width for responsiveness */
+  color: #181717;
+  background-color: #ffffff; /* Added background color */
+  box-shadow: 0px 14px 80px rgba(222, 223, 225, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all 0.3s;
+}
+
+.auth-inner h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-inner .form-control {
+  margin-bottom: 20px;
+}
+
+.auth-inner .d-grid {
+  margin-top: 20px;
+}
+
+.forgot-password {
+  font-size: 13px;
+  color: #7f7d7d;
+}
+
+.forgot-password a {
+  color: #167bff;
+}

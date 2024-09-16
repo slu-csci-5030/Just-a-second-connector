@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("https://community.thriveglobal.com/wp-content/uploads/2018/09/GettyImages-743706161.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  font-weight: 400;
+  font-family: "Fira Sans", sans-serif;
+  color: #8f7b7b;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+span {
+  font-weight: 500;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+}
+
+.navbar {
+  width: 100vw;
+}
+
+
+.container {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 40px;
+  margin-right: 100px;
+}
+
+li {
+  list-style: none;
+  font-size: 20px;
+  background-color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+ul {
+  margin: 0;
+}
+
+.navbar-light {
+  background-color: black;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+}
+
+/* Navbar styling */
+.navbar-light .navbar-brand {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: black;
+  text-decoration: none;
+}
+
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 50vw;
+}
+
+.auth-inner {
+  margin-top: -70px;
+  width: 50%;
+  height: 80%;
+  color: #181717;
+  background-color: black;
+  box-shadow: 3px 14px 80px rgba(222, 223, 225, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 20px;
+  transition: all 0.3s;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+@media only screen and (max-width: 1200px) {
+  .auth-wrapper {
+    width: 100vw;
+  }
+}
+
+.auth-inner h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-inner .form-control {
+  margin-bottom: 20px;
+}
+
+.auth-inner .d-grid {
+  margin-top: 20px;
+}
+
+.forgot-password {
+  font-size: 13px;
+  color: #7f7d7d;
+}
+
+.forgot-password a {
+  color: #167bff;
+}
